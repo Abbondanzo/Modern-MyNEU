@@ -1,18 +1,19 @@
 @import "../bourbon/bourbon";
+@import "./font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 $padding: 2em 4em;
 $primary: #ea1f23;
 $active: #242428;
 $sidemenu: #2c2c30;
-$width: 400px;
+$width: 380px;
 $inset: 8px;
 $header: 84px;
 $logout: 120px;
 $font: 'Montserrat', sans-serif;
 $textcolor: #63636b;
 
-@include keyframes(slideIn) {
+@include keyframes(slideInLeft) {
     0% {
         box-shadow: inset 0 0 0 0 $primary;
     }
@@ -20,9 +21,21 @@ $textcolor: #63636b;
         box-shadow: inset $inset 0 0 0 $primary;
     }
 }
+@include keyframes(slideInUp) {
+    0% {
+        box-shadow: inset 0 0 0 0 $primary;
+    }
+    100% {
+        box-shadow: inset 0 (-$inset) 0 0 $primary;
+    }
+}
 
 .uportal-head14-bold {
     color: red!important;
+}
+
+html {
+    opacity: 1;
 }
 
 body {
@@ -55,6 +68,12 @@ ul {
     background-color: $primary;
     left: 0;
     top: 0;
+    img {
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+        padding-top: 13px;
+    }
 }
 
 .heading {
@@ -64,6 +83,9 @@ ul {
     top: 0;
     right: $logout;
     background: #fff;
+    ul {
+        padding-left: 3em;
+    }
     li {
         list-style: none;
         display: inline-block;
@@ -87,6 +109,9 @@ ul {
         img {
             display: none;
         }
+        &:hover, &:visited {
+            text-decoration: none;
+        }
     }
     .logout {
         position: fixed;
@@ -108,6 +133,11 @@ ul {
             display: block;
         }
     }
+    span:not(#welcome) .secondary {
+        &:hover {
+            @include animation( slideInUp 0.2s forwards );
+        }
+    }
 }
 
 #tabs_tda {
@@ -118,6 +148,10 @@ ul {
     top: $header;
     .nav {
         padding-top: 3em;
+        .fa {
+            padding-right: 1em;
+            font-size: 20px;
+        }
     }
     tr {
         width: $width;
@@ -133,7 +167,7 @@ ul {
         display: block;
         color: #fff;
         font-weight: 300;
-        font-size: 16px;
+        font-size: 14px;
         font-family: $font;
     }
 }
@@ -150,7 +184,7 @@ div {
     }
     &.taboff {
         a:hover {
-            @include animation( slideIn 0.2s forwards );
+            @include animation( slideInLeft 0.2s forwards );
         }
     }
 }

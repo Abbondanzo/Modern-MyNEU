@@ -6,7 +6,7 @@
     "version": "1.0",
 
     "browser_action": {
-        "default_icon": "icon.png",
+        "default_icon": "img/icon.png",
         "default_popup": "popup.html",
         "default_title": "Modern MyNEU"
     },
@@ -19,10 +19,17 @@
         {
             "matches": ["http://myneu.neu.edu/*","https://myneu.neu.edu/*"],
             "js": ["js/jquery-2.1.4.min.js","js/inject.min.js"],
-            "css": ["css/custom.css"]
+            "css": ["css/loader.css"]
         }
     ],
     "web_accessible_resources": [
-        "css/custom.css"
+        "css/custom.css",
+        "fonts/fontawesome-webfont.oft",
+        "fonts/fontawesome-webfont.eot",
+        "fonts/fontawesome-webfont.ttf",
+        "fonts/fontawesome-webfont.woff",
+        "fonts/fontawesome-webfont.woff2",
+        "fonts/fontawesome-webfont.svg",
+        "img/logo.png"
     ]
 }
