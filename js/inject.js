@@ -18,6 +18,7 @@ $('#welcome').closest('table').each(function() {
     var tabs = $(this).html().replace(/<tbody>/g,'<div>').replace(/Welcome/g, 'Signed in as').replace(/You are currently logged in./g, '');
     var regex = tabs.replace(/<\/tbody>/g,'</div>').replace(/<br>/g,'').replace(/<tr>/g,'<ul>').replace(/<\/tr>/g,'</ul>').replace(/<td>/g,'<li>').replace(/<\/td>/g,'</li>').replace(/<tr/g,'<ul').replace(/<td/g,'<li');
     $(this).html('<div class="heading">'+regex+'</div>');
+    $(this).css('height',84+'px');
 })
 
 $('.uportal-label').each(function() {
