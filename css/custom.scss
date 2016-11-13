@@ -7,6 +7,10 @@ $active: #242428;
 $sidemenu: #2c2c30;
 $width: 400px;
 $inset: 8px;
+$header: 84px;
+$logout: 120px;
+$font: 'Montserrat', sans-serif;
+$textcolor: #63636b;
 
 @include keyframes(slideIn) {
     0% {
@@ -30,14 +34,35 @@ body, .uportal-background-content, #lw {
 }
 
 .uportal-text, .uportal-channel-text, .uportal-head14-bold, .uportal-channel-subtitle, #lw {
-    font-family: 'Montserrat', sans-serif!important;
+    font-family: $font!important;
+}
+
+ul {
+    display: block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+}
+
+.mylogo {
+    position: fixed;
+    text-align: center;
+    color: #fff;
+    font-family: $font;
+    width: $width;
+    height: $header;
+    line-height: $header;
+    background-color: $primary;
+    left: 0;
+    top: 0;
 }
 
 .heading {
     position: fixed;
     left: $width;
+    height: $header;
     top: 0;
-    right: 0;
+    right: $logout;
     background: #fff;
     li {
         list-style: none;
@@ -45,10 +70,42 @@ body, .uportal-background-content, #lw {
         img {
             display: none;
         }
+        a {
+            span {
+                display: block;
+                line-height: $header;
+                font-family: $font;
+                font-size: 14px;
+                font-weight: 300;
+                color: $textcolor;
+                padding: 0 2em;
+                text-transform: uppercase;
+            }
+        }
     }
     a {
         img {
             display: none;
+        }
+    }
+    .logout {
+        position: fixed;
+        width: $logout;
+        padding: 0;
+        right: 0;
+        top: 0;
+        background: #e8e8e8;
+    }
+    .user {
+        float: right;
+        span {
+            font-family: $font;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: $header;
+            padding: 0 2em;
+            color: $textcolor;
+            display: block;
         }
     }
 }
@@ -58,16 +115,13 @@ body, .uportal-background-content, #lw {
     height: 100%;
     position: fixed;
     left: 0;
-    top: 0;
+    top: $header;
+    .nav {
+        padding-top: 3em;
+    }
     tr {
         width: $width;
         overflow: hidden;
-    }
-    ul {
-        display: block;
-        -webkit-margin-before: 0;
-        -webkit-margin-after: 0;
-        -webkit-padding-start: 0;
     }
     li {
         list-style: none;
@@ -80,7 +134,7 @@ body, .uportal-background-content, #lw {
         color: #fff;
         font-weight: 300;
         font-size: 16px;
-        font-family: 'Montserrat', sans-serif;
+        font-family: $font;
     }
 }
 

@@ -13,9 +13,17 @@ $('#tabs_tda').each(function() {
     $(this).html('<div class="nav">'+regex+'</div>');
 });
 /* Hide that crappy image at top */
-$('.bg1').closest('table').css('display','none');
+$('.bg1').closest('table').html('<div class="mylogo">myNEU</div>');
 $('#welcome').closest('table').each(function() {
-    var tabs = $(this).html().replace(/<tbody>/g,'<div>');
-    var regex = tabs.replace(/<\/tbody>/g,'</div>').replace(/<tr>/g,'<ul>').replace(/<\/tr>/g,'</ul>').replace(/<td>/g,'<li>').replace(/<\/td>/g,'</li>').replace(/<tr/g,'<ul').replace(/<td/g,'<li');
+    var tabs = $(this).html().replace(/<tbody>/g,'<div>').replace(/Welcome/g, 'Signed in as').replace(/You are currently logged in./g, '');
+    var regex = tabs.replace(/<\/tbody>/g,'</div>').replace(/<br>/g,'').replace(/<tr>/g,'<ul>').replace(/<\/tr>/g,'</ul>').replace(/<td>/g,'<li>').replace(/<\/td>/g,'</li>').replace(/<tr/g,'<ul').replace(/<td/g,'<li');
     $(this).html('<div class="heading">'+regex+'</div>');
 })
+
+$('.uportal-label').each(function() {
+    if($(this).html().indexOf('logout') != -1) {
+        $(this).addClass('logout');
+    }
+});
+
+$('#welcome').parent().addClass('user');
