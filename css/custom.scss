@@ -42,8 +42,11 @@ html {
     opacity: 1;
 }
 
-body {
+.main {
     margin-left: 20+$width!important;
+}
+
+body, .uportal-background-content {
     background-color: #f7f7f7!important;
 }
 
@@ -234,6 +237,9 @@ div {
         font-size: 14px;
         padding: 0 4px;
         color: #e8e8e8;
+    }
+    .uportal-background-content {
+        background-color: #fff!important;
     }
 }
 
