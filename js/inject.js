@@ -5,6 +5,14 @@ style.type = 'text/css';
 style.href = chrome.extension.getURL('css/custom.css');
 (document.head||document.documentElement).appendChild(style);
 
+$("iframe").each(function() {
+    try {
+        $(this).replaceWith($(this).contents().find("body").html());
+    } catch (e) {
+        console.log(e);
+    }
+});
+
 /* Modify Tab data from a table to a list */
 $('#tabs_tda').each(function() {
     //.replace(/<tr/g,'<ul').replace(/<\/tr>/g,'</ul>').replace(/<td/g,'<li').replace(/<\/td>/g,'</li>')
@@ -45,6 +53,7 @@ $('.uportal-label').each(function() {
             break;
         case "help":
             $(this).html('<i class="fa fa-question-circle" aria-hidden="true"></i> '+html);
+            $(this).closest('ul').append('<li class="search"><input type="type" id="searchQuery" placeholder="Search"></input></li>');
             break;
         case "logout":
             $(this).html(html+' <i class="fa fa-sign-out" aria-hidden="true"></i>');
@@ -53,7 +62,7 @@ $('.uportal-label').each(function() {
             break;
     }
 });
-$('.nav').children('div').children('ul').children('li').each(function() {
+$('.nav div ul li').each(function() {
     var html = $(this).children().children().html();
     if (html.indexOf('myNEU Central') != -1) {
         $(this).children().children().html('<i class="fa fa-home" aria-hidden="true"></i> '+html);
@@ -73,7 +82,6 @@ $('.nav').children('div').children('ul').children('li').each(function() {
 $('.border img').each(function() {
     var title = $(this).attr('title');
     var src = $(this).attr('src');
-    console.log(title);
     if(title != null) {
         if (title.indexOf('Expand') != -1) {
             $(this).parent().html('<i title="'+title+'" class="fa fa-expand" aria-hidden="true"></i>');
@@ -85,4 +93,38 @@ $('.border img').each(function() {
     } else if (src.indexOf('chan_remove_na') != -1) {
         $(this).css('display','none');
     }
+});
+/* Search regex */
+$('#searchQuery').on('keypress change keydown paste input', function() {
+    var query = $(this).val().toLowerCase();
+    $('.uportal-background-content td table').each(function() {
+        var html = $(this).html().toLowerCase().replace(/<.*?>/g,'');
+        if (html.indexOf(query) != -1) {
+             $(this).css('display','table');
+        } else {
+            $(this).css('display','none');
+        };
+    });
+});
+function checkLove() {
+    var offset = $('.nav').offset().top;
+    var height = $('.nav').height();
+    var love = $('.credits').offset().top;
+    if (offset+height+40>=love) {
+        $('.credits').css('opacity',0);
+    } else {
+        $('.credits').css('opacity',0.2);
+    }
+};
+var timeoutId;
+$(window).on('resize',function() {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(function() {
+        checkLove();
+    }, 50 );
+})
+$(document).ready(function ($) {
+    setTimeout(function() {
+        checkLove();
+    }, 50 );
 });

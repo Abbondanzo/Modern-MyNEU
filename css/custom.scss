@@ -35,7 +35,12 @@ $font: 'Montserrat', sans-serif;
 }
 
 .uportal-head14-bold {
-    color: red!important;
+    color: $primary!important;
+}
+
+*::selection {
+    background: $primary;
+    color: #fff;
 }
 
 html {
@@ -44,13 +49,14 @@ html {
 
 .main {
     margin-left: 20+$width!important;
+    margin-right: 20px!important;
 }
 
 body, .uportal-background-content {
     background-color: #f7f7f7!important;
 }
 
-.uportal-text, .uportal-channel-text, .uportal-head14-bold, .uportal-channel-subtitle, #lw, a {
+.uportal-text, .uportal-channel-text, .uportal-head14-bold, .uportal-channel-subtitle, #lw, a, .Taupe {
     font-family: $font!important;
 }
 
@@ -91,7 +97,7 @@ ul {
     background: #fff;
     border-bottom: 1px solid $border;
     ul {
-        padding-left: 3em;
+        padding-left: 1em;
     }
     li {
         list-style: none;
@@ -136,7 +142,7 @@ ul {
             font-size: 14px;
             font-weight: 300;
             line-height: $header;
-            padding-right: 2em;
+            padding-right: 1em;
             color: $textcolor;
             display: block;
         }
@@ -148,6 +154,20 @@ ul {
         .fa {
             color: $primary;
             padding-right: 0.75em;
+        }
+    }
+    .search {
+        padding-left: 2em;
+    }
+    input {
+        background: #fafafa;
+        border: 1px solid #fff;
+        border-radius: 99px;
+        padding: 1.2em 4em 1.2em 2.5em;;
+        font-family: $font;
+        &:focus {
+            outline: none;
+            border: 1px solid $border;
         }
     }
 }
@@ -250,7 +270,28 @@ div {
 }
 
 // Viewport render fixes
-@media screen and (max-width: 1320px) {
+@media screen and (max-width: 1700px) {
+    .heading {
+        .user span, li a span {
+            font-size: 12px;
+        }
+        li a span {
+            padding: 0 1em;
+        }
+        .search {
+            padding-left: 1em;
+            input {
+                padding: 1.2em;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1400px) {
+    .search {
+        padding-left: 0;
+    }
+}
+@media screen and (max-width: 1360px) {
     .mylogo {
         width: 0.75*$width;
         img {
@@ -278,5 +319,8 @@ div {
                 }
             }
         }
+    }
+    .main {
+        margin-left: 20+$width*0.75!important;
     }
 }
