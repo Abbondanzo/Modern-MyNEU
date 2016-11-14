@@ -128,7 +128,7 @@ ul {
             font-size: 14px;
             font-weight: 300;
             line-height: $header;
-            padding: 0 2em;
+            padding-right: 2em;
             color: $textcolor;
             display: block;
         }
@@ -189,6 +189,36 @@ div {
     &.taboff {
         a:hover {
             @include animation( slideInLeft 0.2s forwards );
+        }
+    }
+}
+@media screen and (max-width: 1320px) {
+    .mylogo {
+        width: 0.75*$width;
+        img {
+            padding-top: 20px;
+        }
+    }
+    #tabs_tda {
+        tr, li {
+            width: 0.75*$width;
+        }
+        a {
+            padding: 2em;
+            font-size: 12px;
+        }
+    }
+    .heading {
+        left: 0.75*$width;
+        ul {
+            padding-left: 0;
+        }
+        li {
+            a {
+                span {
+                    font-size: 12px;
+                }
+            }
         }
     }
 }
