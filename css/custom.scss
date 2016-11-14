@@ -306,12 +306,12 @@ div {
             padding: 2em;
             font-size: 12px;
         }
+        .credits {
+            width: 0.75*$width;
+        }
     }
     .heading {
         left: 0.75*$width;
-        ul {
-            padding-left: 0;
-        }
         li {
             a {
                 span {
