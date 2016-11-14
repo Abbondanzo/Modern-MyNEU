@@ -47,7 +47,7 @@ html {
     opacity: 1;
 }
 
-.main {
+body.main {
     margin-left: 20+$width!important;
     margin-right: 20px!important;
 }
@@ -320,7 +320,10 @@ div {
             }
         }
     }
-    .main {
+    body.main {
         margin-left: 20+$width*0.75!important;
+    }
+    .credits {
+        width: 0.75*$width;
     }
 }
