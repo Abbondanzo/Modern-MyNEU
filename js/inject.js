@@ -46,6 +46,9 @@ $('.uportal-label').each(function() {
         case "help":
             $(this).html('<i class="fa fa-question-circle" aria-hidden="true"></i> '+html);
             break;
+        case "logout":
+            $(this).html(html+' <i class="fa fa-sign-out" aria-hidden="true"></i>');
+            break;
         default:
             break;
     }

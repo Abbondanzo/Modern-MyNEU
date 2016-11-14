@@ -133,9 +133,13 @@ ul {
             display: block;
         }
     }
-    span:not(#welcome) .secondary {
+    a .secondary {
         &:hover {
             @include animation( slideInUp 0.2s forwards );
+        }
+        .fa {
+            color: $primary;
+            padding-right: 0.75em;
         }
     }
 }
