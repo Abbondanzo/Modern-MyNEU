@@ -3,15 +3,19 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 $padding: 2em 4em;
+
 $primary: #ea1f23;
+$textcolor: #63636b;
 $active: #242428;
 $sidemenu: #2c2c30;
+$border: #e4e4e4;
+
 $width: 380px;
 $inset: 8px;
 $header: 84px;
-$logout: 120px;
+$logout: 130px;
+
 $font: 'Montserrat', sans-serif;
-$textcolor: #63636b;
 
 @include keyframes(slideInLeft) {
     0% {
@@ -39,14 +43,11 @@ html {
 }
 
 body {
-    margin-left: 10+$width!important;
-}
-
-body, .uportal-background-content, #lw {
+    margin-left: 20+$width!important;
     background-color: #f7f7f7!important;
 }
 
-.uportal-text, .uportal-channel-text, .uportal-head14-bold, .uportal-channel-subtitle, #lw {
+.uportal-text, .uportal-channel-text, .uportal-head14-bold, .uportal-channel-subtitle, #lw, a {
     font-family: $font!important;
 }
 
@@ -57,6 +58,8 @@ ul {
     -webkit-padding-start: 0;
 }
 
+
+// All navigation menus
 .mylogo {
     position: fixed;
     text-align: center;
@@ -83,6 +86,7 @@ ul {
     top: 0;
     right: $logout;
     background: #fff;
+    border-bottom: 1px solid $border;
     ul {
         padding-left: 3em;
     }
@@ -120,6 +124,7 @@ ul {
         right: 0;
         top: 0;
         background: #e8e8e8;
+        border-bottom: 1px solid $border;
     }
     .user {
         float: right;
@@ -150,6 +155,7 @@ ul {
     position: fixed;
     left: 0;
     top: $header;
+    bottom: 0;
     .nav {
         padding-top: 3em;
         .fa {
@@ -174,6 +180,24 @@ ul {
         font-size: 14px;
         font-family: $font;
     }
+    .credits {
+        text-align: center;
+        font-size: 10px;
+        width: $width;
+        opacity: 0.2;
+        color: #fff;
+        font-family: $font;
+        position: fixed;
+        bottom: 20px;
+        a {
+            text-decoration: underline;
+            padding: 0;
+            background-color: transparent;
+            width: auto;
+            font-size: 10px;
+            display: inline-block;
+        }
+    }
 }
 
 div {
@@ -192,6 +216,34 @@ div {
         }
     }
 }
+
+// Tables
+.bgmlight, .bg3, .bgtabon, .cpdate {
+    display: none;
+}
+
+.border {
+    border: 1px solid $border;
+    table {
+        background-color: #fff;
+        color: red;
+        padding: 1.5em;
+        width: 100%;
+    }
+    .fa {
+        font-size: 14px;
+        padding: 0 4px;
+        color: #e8e8e8;
+    }
+}
+
+.vrule {
+    img {
+        width: 20px;
+    }
+}
+
+// Viewport render fixes
 @media screen and (max-width: 1320px) {
     .mylogo {
         width: 0.75*$width;

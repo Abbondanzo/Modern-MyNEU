@@ -10,7 +10,7 @@ $('#tabs_tda').each(function() {
     //.replace(/<tr/g,'<ul').replace(/<\/tr>/g,'</ul>').replace(/<td/g,'<li').replace(/<\/td>/g,'</li>')
     var tabs = $(this).html().replace(/<tbody>/g,'<div>');
     var regex = tabs.replace(/<\/tbody>/g,'</div>').replace(/<tr>/g,'<ul>').replace(/<\/tr>/g,'</ul>').replace(/<td>/g,'<li>').replace(/<\/td>/g,'</li>').replace(/<tr/g,'<ul').replace(/<td/g,'<li');
-    $(this).html('<div class="nav">'+regex+'</div>');
+    $(this).html('<div class="nav">'+regex+'</div><div class="credits">Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://github.com/Abbondanzo/Modern-MyNEU">Peter Abbondanzo</a></div>');
 });
 /* Hide that crappy image at top */
 $('.bg1').closest('table').html('<div class="mylogo"><img src="'+chrome.extension.getURL('img/logo.png')+'"></div>');
@@ -55,7 +55,6 @@ $('.uportal-label').each(function() {
 });
 $('.nav').children('div').children('ul').children('li').each(function() {
     var html = $(this).children().children().html();
-    console.log(html);
     if (html.indexOf('myNEU Central') != -1) {
         $(this).children().children().html('<i class="fa fa-home" aria-hidden="true"></i> '+html);
     } else if (html.indexOf('Self-Service') != -1) {
@@ -68,5 +67,22 @@ $('.nav').children('div').children('ul').children('li').each(function() {
         $(this).children().children().html('<i class="fa fa-briefcase" aria-hidden="true"></i> '+html);
     } else if (html.indexOf('InfoChannels') != -1) {
         $(this).children().children().html('<i class="fa fa-info-circle" aria-hidden="true"></i> '+html);
+    }
+});
+/* Replaces expand, minimize, and maximize icons */
+$('.border img').each(function() {
+    var title = $(this).attr('title');
+    var src = $(this).attr('src');
+    console.log(title);
+    if(title != null) {
+        if (title.indexOf('Expand') != -1) {
+            $(this).parent().html('<i title="'+title+'" class="fa fa-expand" aria-hidden="true"></i>');
+        } else if (title.indexOf('Maximize') != -1) {
+            $(this).parent().html('<i title="'+title+'" class="fa fa-window-maximize" aria-hidden="true"></i>');
+        } else if (title.indexOf('Minimize') != -1) {
+            $(this).parent().html('<i title="'+title+'" class="fa fa-window-minimize" aria-hidden="true"></i>');
+        }
+    } else if (src.indexOf('chan_remove_na') != -1) {
+        $(this).css('display','none');
     }
 });
