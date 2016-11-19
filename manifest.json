@@ -3,12 +3,13 @@
 
     "name": "Modern MyNEU",
     "description": "This extension drastically improves the look of Northeastern's myNEU portal. The portal was made in 2009 and this was made in 2016.",
-    "version": "0.8.4",
-    "icons": { "16": "img/icon16.png",
-           "48": "img/icon48.png",
-          "128": "img/icon128.png"
-     },
-
+    "version": "0.8.6",
+    "icons": {
+        "16": "img/icon16.png",
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
+    "options_page": "options.html",
     "browser_action": {
         "default_icon": "img/icon.png",
         "default_popup": "popup.html",
@@ -17,6 +18,7 @@
     "permissions": [
         "activeTab",
         "tabs",
+        "storage",
         "https://ajax.googleapis.com/"
     ],
     "content_scripts": [
