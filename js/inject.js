@@ -3,7 +3,7 @@ var style = document.createElement('link');
 style.rel = 'stylesheet';
 style.type = 'text/css';
 style.id = 'customcss';
-style.href = chrome.extension.getURL('css/custom.css');
+style.href = chrome.extension.getURL('themes/modern/custom.css');
 chrome.storage.sync.get({
     enabled: "true"
 }, function(items) {
