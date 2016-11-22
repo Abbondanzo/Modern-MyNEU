@@ -1,18 +1,17 @@
 // Saves options to chrome.storage
 function save_options() {
+    var enab = document.getElementById('enable');
+    if (enab.value == "false") {
+        enab.value = "true";
+        enab.textContent = "Disable";
+    } else {
+        enab.value = "false";
+        enab.textContent = "Enable";
+    }
     var enabled = document.getElementById('enable').value;
     chrome.storage.sync.set({
         enabled: enabled
     }, function() {
-        var enab = document.getElementById('enable');
-        if (enab.value == "false") {
-            enab.value = "true";
-            enab.textContent = "Enable";
-        } else {
-            enab.value = "false";
-            enab.textContent = "Disable";
-        }
-
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
         status.textContent = 'Options saved.';

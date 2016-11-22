@@ -30,7 +30,7 @@
     ],
     "web_accessible_resources": [
         "css/default.css",
-        "css/custom.css",
+        "themes/modern/custom.css",
         "fonts/fontawesome-webfont.oft",
         "fonts/fontawesome-webfont.eot",
         "fonts/fontawesome-webfont.ttf",

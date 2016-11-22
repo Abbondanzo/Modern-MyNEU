@@ -5,29 +5,28 @@ This page is shown when the extension button is clicked, because the
 value "popup.html".
 -->
 <html>
-    <head>
-        <title>Modern MyNEU's Popup</title>
-        <style>
-        body {
-            font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-            font-size: 12px;
-            width: 300px;
-        }
-        </style>
+<head>
+    <title>Modern MyNEU's Popup</title>
+    <style>
+    body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 12px;
+        width: 300px;
+    }
+    </style>
 
-        <!--
-        - JavaScript and HTML must be in separate files: see our Content Security
-        - Policy documentation[1] for details and explanation.
-        -
-        - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-        -->
-    </head>
-    <body>
-        <p>Settings to come soon. For now, check out my repo at <a target="_new" href="https://github.com/Abbondanzo/Modern-MyNEU">https://github.com/Abbondanzo/Modern-MyNEU</a></p>
+    <!--
+    - JavaScript and HTML must be in separate files: see our Content Security
+    - Policy documentation[1] for details and explanation.
+    -
+    - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+-->
+</head>
+<body>
+    <p>Settings to come soon. For now, check out my repo at <a target="_new" href="https://github.com/Abbondanzo/Modern-MyNEU">https://github.com/Abbondanzo/Modern-MyNEU</a></p>
+    <button value="true" id="enable">Disable</button>
+    <div id="status"></div>
+    <script src="js/popup.js"></script>
+</body>
 
-        <button value="false" id="enable">Enable</button>
-        
-        <div id="status"></div>
-        <script src="js/popup.js"></script>
-    </body>
 </html>
