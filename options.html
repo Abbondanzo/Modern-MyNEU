@@ -1,24 +1,136 @@
 <!DOCTYPE html>
 <html>
-<head><title>My Test Extension Options</title></head>
+<head>
+    <title>Modern MyNEU's Options</title>
+    <style>
+    * {
+        outline: none;
+    }
+    body {
+        font-family: "Montserrat", sans-serif;
+        text-align: center;
+        font-size: 12px;
+        margin: 0;
+        color: #444;
+    }
+    .title-head {
+        width: 100%;
+        background: #2c2c30;
+        padding: 10px;
+        color: #fff;
+    }
+    .content {
+        width: 480px;
+        margin: 0 auto;
+    }
+    h1, p{
+        margin: 0;
+    }
+    a {
+        color: inherit;
+    }
+    h3 {
+        font-weight: 400;
+        font-size: 12px;
+        text-align: left;
+    }
+    table {
+        padding-top: 1em;
+        width: 100%;
+    }
+    td {
+        width: 50%;
+        vertical-align: middle;
+        text-align: center;
+        padding: 0 8px 1em 8px;
+    }
+    button {
+        font-family: "Montserrat", sans-serif;
+        position: relative;
+        width: 140px;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select: none;
+        overflow: hidden;
+        cursor: pointer;
+        height: 40px;
+        padding: 0;
+        line-height: 20px;
+        border: 2px solid #999999;
+        border-radius: 40px;
+        background-color: #EEEEEE;
+        transition: background-color 0.3s ease-in;
+    }
+    button::before, button::after {
+        display: block;
+        position: absolute;
+        content: "";
+    }
+    button::before {
+        content: "";
+        display: block;
+        width: 32px;
+        margin: 0px;
+        background: #FFFFFF;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 98px;
+        border: 2px solid #999999;
+        border-radius: 40px;
+        transition: all 0.3s ease-in 0s;
+    }
+    #enable[value=true]::before {
+        border-color: #8CE196;
+        right: 0px;
+    }
+    #enable[value=true] {
+        background-color: #8CE196;
+        color: #fff;
+    }
+    select {
+        width: 140px;
+        height: 40px;
+    }
+    .help {
+        font-size: 10px;
+        opacity: 0.6;
+        padding: 10px;
+    }
+    </style>
+</head>
 <body>
-
-    Favorite color:
-    <select id="color">
-        <option value="red">red</option>
-        <option value="green">green</option>
-        <option value="blue">blue</option>
-        <option value="yellow">yellow</option>
-    </select>
-
-    <label>
-        <input type="checkbox" id="like">
-        I like colors.
-    </label>
-
-    <div id="status"></div>
-    <button id="save">Save</button>
-
-    <script src="js/options.min.js"></script>
+    <div class="title-head">
+        <h1>Modern MyNEU</h1>
+        <p>By <a target="_new" href="https://github.com/Abbondanzo/Modern-MyNEU">Peter Abbondanzo</a></p>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td>
+                    <h3>Toggle Plugin On/Off</h3>
+                </td>
+                <td>
+                    <button value="true" id="enable">ON</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Select Theme</h3>
+                </td>
+                <td>
+                    <select>
+                        <option value="modern">Modern</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <p style="padding:10px;font-size:10px;">More settings coming soon. I'm brand new to this whole "Chrome storage" thing so I'm constantly tinkering with the back-end. I'm also adjusting this current theme to work on pop-up windows, as well as building two new features--theme customization and movable widget layouts.</p>
+        <div class="help">
+            <p>Any questions or bugs? Report them by <a target="_new" href="https://github.com/Abbondanzo/Modern-MyNEU/issues">clicking here</a></p>
+        </div>
+        <div id="status"></div>
+    </div>
 </body>
+<script src="js/popup.js"></script>
 </html>
