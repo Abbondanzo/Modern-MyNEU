@@ -21,6 +21,9 @@
         "storage",
         "https://ajax.googleapis.com/"
     ],
+    "background": {
+        "scripts": ["js/jquery-2.1.4.min.js"]
+    },
     "content_scripts": [
         {
             "matches": ["http://myneu.neu.edu/*","https://myneu.neu.edu/*"],
@@ -31,6 +34,7 @@
     "web_accessible_resources": [
         "css/default.css",
         "themes/modern/custom.css",
+        "themes/modern/script.min.js",
         "fonts/fontawesome-webfont.oft",
         "fonts/fontawesome-webfont.eot",
         "fonts/fontawesome-webfont.ttf",

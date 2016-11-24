@@ -4,6 +4,7 @@ function save_options() {
     if (enab.value == "false") {
         enab.value = "true";
         enab.textContent = "Disable";
+        chrome.tabs.executeScript(null, {file: "js/script.min.js"});
     } else {
         enab.value = "false";
         enab.textContent = "Enable";
@@ -30,7 +31,12 @@ function restore_options() {
     }, function(items) {
         var enab = document.getElementById('enable');
         enab.value = items.enabled;
-        enab.value == "false" ? enab.textContent = 'Enable' : enab.textContent = 'Disable';
+        if (enab.value == "false") {
+            enab.textContent = 'Enable'
+        } else {
+            enab.textContent = 'Disable'
+            chrome.tabs.executeScript(null, {file: "themes/modern/script.min.js"});
+        }
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
