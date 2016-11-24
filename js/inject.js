@@ -104,9 +104,9 @@ function modernTheme() {
             if (title.indexOf('Expand') != -1) {
                 $(this).parent().html('<i title="'+title+'" class="fa fa-expand" aria-hidden="true"></i>');
             } else if (title.indexOf('Maximize') != -1) {
-                $(this).parent().html('<i title="'+title+'" class="fa fa-window-maximize" aria-hidden="true"></i>');
+                $(this).parent().html('<i title="'+title+'" class="fa fa-caret-square-o-right" aria-hidden="true"></i>');
             } else if (title.indexOf('Minimize') != -1) {
-                $(this).parent().html('<i title="'+title+'" class="fa fa-window-minimize" aria-hidden="true"></i>');
+                $(this).parent().html('<i title="'+title+'" class="fa fa-caret-square-o-down" aria-hidden="true"></i>');
             }
         } else if (src.indexOf('chan_remove_na') != -1) {
             $(this).css('display','none');
