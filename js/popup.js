@@ -35,7 +35,6 @@ function restore_options() {
             enab.textContent = 'Enable'
         } else {
             enab.textContent = 'Disable'
-            chrome.tabs.executeScript(null, {file: "themes/modern/script.min.js"});
         }
     });
 }

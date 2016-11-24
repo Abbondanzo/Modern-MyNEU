@@ -22,19 +22,18 @@
         "https://ajax.googleapis.com/"
     ],
     "background": {
-        "scripts": ["js/jquery-2.1.4.min.js"]
+        "scripts": ["js/background.js"]
     },
     "content_scripts": [
         {
             "matches": ["http://myneu.neu.edu/*","https://myneu.neu.edu/*"],
             "js": ["js/jquery-2.1.4.min.js","js/inject.min.js"],
-            "css": ["css/loader.css"]
+            "css": ["css/font-awesome.css","css/loader.css"]
         }
     ],
     "web_accessible_resources": [
         "css/default.css",
         "themes/modern/custom.css",
-        "themes/modern/script.min.js",
         "fonts/fontawesome-webfont.oft",
         "fonts/fontawesome-webfont.eot",
         "fonts/fontawesome-webfont.ttf",
