@@ -7,7 +7,6 @@ style.href = chrome.extension.getURL('themes/modern/custom.css');
 chrome.storage.sync.get({
     enabled: "true"
 }, function(items) {
-    console.log(items.enabled);
     if (items.enabled == "false") {
         $("link[href*='custom.css']").remove();
         style.href = chrome.extension.getURL('css/default.css');
@@ -23,13 +22,14 @@ function checkScript() {
 }
 
 function modernTheme() {
-    $("iframe").each(function() {
+    // This is currently causing conflict with iframe loading
+    /*$("iframe").each(function() {
         try {
             $(this).replaceWith($(this).contents().find("body").html());
         } catch (e) {
             console.log(e);
         }
-    });
+    }); */
 
     /* Modify Tab data from a table to a list */
     $('#tabs_tda').each(function() {
