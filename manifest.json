@@ -26,7 +26,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["http://myneu.neu.edu/*","https://myneu.neu.edu/*"],
+            "matches": ["http://myneu.neu.edu/*","https://myneu.neu.edu/*","https://wl11gp.neu.edu/*"],
             "js": ["js/jquery-2.1.4.min.js","js/inject.min.js"],
             "css": ["css/font-awesome.css","css/loader.css"]
         }
