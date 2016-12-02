@@ -100,9 +100,10 @@ function modernTheme() {
     $('.border img').each(function() {
         var title = $(this).attr('title');
         var src = $(this).attr('src');
+        var packery = '<i title="Adjust the position of this widget on screen" class="fa fa-arrows" aria-hidden="true"></i>'
         if(title != null) {
             if (title.indexOf('Expand') != -1) {
-                $(this).parent().html('<i title="'+title+'" class="fa fa-expand" aria-hidden="true"></i>');
+                $(this).parent().html(packery+'<i title="'+title+'" class="fa fa-expand" aria-hidden="true"></i>');
             } else if (title.indexOf('Maximize') != -1) {
                 $(this).parent().html('<i title="'+title+'" class="fa fa-caret-square-o-right" aria-hidden="true"></i>');
             } else if (title.indexOf('Minimize') != -1) {

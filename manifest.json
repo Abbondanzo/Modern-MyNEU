@@ -33,6 +33,7 @@
     ],
     "web_accessible_resources": [
         "css/default.css",
+        "packery.min.js",
         "themes/modern/custom.css",
         "fonts/fontawesome-webfont.oft",
         "fonts/fontawesome-webfont.eot",
