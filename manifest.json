@@ -27,13 +27,13 @@
     "content_scripts": [
         {
             "matches": ["http://myneu.neu.edu/*","https://myneu.neu.edu/*","https://wl11gp.neu.edu/*"],
-            "js": ["js/jquery-2.1.4.min.js","js/inject.min.js"],
+            "js": ["js/jquery-2.1.4.min.js","js/packery.min.js","js/draggabilly.min.js","js/inject.min.js"],
             "css": ["css/font-awesome.css","css/loader.css"]
         }
     ],
     "web_accessible_resources": [
         "css/default.css",
-        "packery.min.js",
+        "js/packery.min.js",
         "themes/modern/custom.css",
         "fonts/fontawesome-webfont.oft",
         "fonts/fontawesome-webfont.eot",

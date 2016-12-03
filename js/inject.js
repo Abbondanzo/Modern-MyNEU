@@ -22,13 +22,20 @@ function checkScript() {
 }
 
 function modernTheme() {
+    // Fixes Sungard's severe lack of common sense
+    $('img').each(function() {
+        var src = $(this).attr('src');
+        if(src.indexOf('transparent') != -1) {
+            $(this).remove();
+        }
+    });
     // This is currently causing conflict with iframe loading
     /*$("iframe").each(function() {
-        try {
-            $(this).replaceWith($(this).contents().find("body").html());
-        } catch (e) {
-            console.log(e);
-        }
+    try {
+    $(this).replaceWith($(this).contents().find("body").html());
+    } catch (e) {
+    console.log(e);
+    }
     }); */
 
     /* Modify Tab data from a table to a list */
@@ -61,23 +68,23 @@ function modernTheme() {
         var html = $(this).html();
         switch (html) {
             case "mail":
-                $(this).html('<i class="fa fa-envelope" aria-hidden="true"></i> '+html);
-                break;
+            $(this).html('<i class="fa fa-envelope" aria-hidden="true"></i> '+html);
+            break;
             case "my profile":
-                $(this).html('<i class="fa fa-cog" aria-hidden="true"></i> '+html);
-                break;
+            $(this).html('<i class="fa fa-cog" aria-hidden="true"></i> '+html);
+            break;
             case "NUPay":
-                $(this).html('<i class="fa fa-shopping-basket" aria-hidden="true"></i> '+html);
-                break;
+            $(this).html('<i class="fa fa-shopping-basket" aria-hidden="true"></i> '+html);
+            break;
             case "help":
-                $(this).html('<i class="fa fa-question-circle" aria-hidden="true"></i> '+html);
-                $(this).closest('ul').append('<li class="search"><input type="type" id="searchQuery" placeholder="Search"></input></li>');
-                break;
+            $(this).html('<i class="fa fa-question-circle" aria-hidden="true"></i> '+html);
+            $(this).closest('ul').append('<li class="search"><input type="type" id="searchQuery" placeholder="Search"></input></li>');
+            break;
             case "logout":
-                $(this).html(html+' <i class="fa fa-sign-out" aria-hidden="true"></i>');
-                break;
+            $(this).html(html+' <i class="fa fa-sign-out" aria-hidden="true"></i>');
+            break;
             default:
-                break;
+            break;
         }
     });
     $('.nav div ul li').each(function() {
@@ -100,10 +107,11 @@ function modernTheme() {
     $('.border img').each(function() {
         var title = $(this).attr('title');
         var src = $(this).attr('src');
-        var packery = '<i title="Adjust the position of this widget on screen" class="fa fa-arrows" aria-hidden="true"></i>'
+        var packery = '<i title="Adjust the position of this widget on screen" class="packery-arrow fa fa-arrows" aria-hidden="true"></i>'
         if(title != null) {
             if (title.indexOf('Expand') != -1) {
-                $(this).parent().html(packery+'<i title="'+title+'" class="fa fa-expand" aria-hidden="true"></i>');
+                $(this).parent().parent().append(packery);
+                $(this).parent().html('<i title="'+title+'" class="fa fa-expand" aria-hidden="true"></i>');
             } else if (title.indexOf('Maximize') != -1) {
                 $(this).parent().html('<i title="'+title+'" class="fa fa-caret-square-o-right" aria-hidden="true"></i>');
             } else if (title.indexOf('Minimize') != -1) {
@@ -113,13 +121,77 @@ function modernTheme() {
             $(this).css('display','none');
         }
     });
+
+    /* Packery */
+    var val = 1;
+
+    // Pack all tables into one central body
+    $('.uportal-background-content').children('tbody').children('tr').children('td').each(function(i) {
+        //$(this).children().attr('data-position',i+1);
+        $(this).children().each(function(j) {
+            $(this).attr('data-position',val);
+            val++;
+        });
+        var html = $(this).html();
+        $(this).parent().after(html);
+    });
+    $('tr.uportal-background-content').html('');
+    // Replace horrible tbody that limits width wrapping
+    var portal = $('table.uportal-background-content').children('tbody').html();//.replace(/<tbody>/g,'<div>').replace(/<\/tbody>/g,'</div>');
+    $('table.uportal-background-content').html("<div class='packery-holder'>"+portal+"</div>");
+    // Make sure layouts are true to their widths
+    $('.uportal-background-content').each(function() {
+        $(this).css('table-layout','fixed');
+    });
+    // Remove Northeastern's garbage "column gaps"
+    $('.packery-holder').children().each(function() {
+        if($(this).is('img')) {
+            $(this).remove();
+        }
+    });
+    $('.uportal-background-content').children().children('table').each(function() {
+        $(this).addClass('packery');
+    });
+    $('.uportal-background-content').children('[valign="top"]').each(function() {
+        $(this).addClass('widgets');
+        if ($(this).index == 1) {
+            $(this).css('padding-right','10px');
+        }
+    });
+
+    // initialize Packery
+    $(document).ready(function ($) {
+        var $grid = $('.packery-holder').packery({
+            itemSelector: '.packery',
+            // columnWidth helps with drop positioning
+            columnWidth: 460,
+            percentPosition: true,
+            gutter: 20
+        });
+        // make all grid-items draggable
+        $grid.find('.packery').each( function( i, gridItem ) {
+            var draggie = new Draggabilly( gridItem );
+            // bind drag events to Packery
+            $grid.packery( 'bindDraggabillyEvents', draggie );
+        });
+        function orderItems() {
+            var itemElems = $grid.packery('getItemElements');
+            $( itemElems ).each( function( i, itemElem ) {
+                $(itemElem).attr('data-position',(i+1));
+            });
+        }
+
+        $grid.on( 'layoutComplete', orderItems );
+        $grid.on( 'dragItemPositioned', orderItems );
+    });
+
     /* Search regex */
     $('#searchQuery').on('keypress change keydown paste input', function() {
         var query = $(this).val().toLowerCase();
         $('.uportal-background-content td table').each(function() {
             var html = $(this).html().toLowerCase().replace(/<.*?>/g,'');
             if (html.indexOf(query) != -1) {
-                 $(this).css('display','table');
+                $(this).css('display','table');
             } else {
                 $(this).css('display','none');
             };

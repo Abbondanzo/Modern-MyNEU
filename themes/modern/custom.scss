@@ -89,6 +89,7 @@ ul {
 
 .heading {
     position: fixed;
+    z-index: 99999;
     left: $width;
     height: $header;
     top: 0;
@@ -260,6 +261,28 @@ div {
     .uportal-background-content {
         background-color: #fff!important;
     }
+}
+
+.widgets {
+    padding: 0 10px;
+    &:first-child {
+        padding: 0 10px 0 0;
+    }
+    &:last-child {
+        padding: 0 0 0 10px;
+    }
+}
+
+.packery {
+    width: 49%;
+    margin: 0;
+}
+.packery-drop-placeholder {
+    outline: 3px dashed #444;
+    outline-offset: -6px;
+    /* transition position changing */
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
 }
 
 .vrule {
