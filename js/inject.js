@@ -31,6 +31,36 @@ function modernTheme() {
         }
     }); */
 
+    // Accelerate the logout session
+    if(window.location.pathname.indexOf('logout') != -1) {
+        window.location.pathname = "/";
+    }
+
+    // Good ol' login styling
+    if(window.location.pathname == "/cp/home/displaylogin") {
+        // Adds styling indicator
+        $('body').addClass('login');
+        // Background--ready for future custom usage
+        $('body').css('background-image','url('+chrome.extension.getURL('img/bg1.jpg')+')');
+        // New prompt
+        $('#wrap').append('<div class="new-login"><form><img src="'+chrome.extension.getURL('img/myNEU.png')+'"><br><input name="neu-user" placeholder="Username" type="text"><br><input name="neu-pass" placeholder="Password" type="password"><br><button onclick="javascript:login();return true;" onload="clearCache()">Log in</button></form></div>');
+        $('.helplinks li').each(function() {
+            if($(this).html().indexOf('password.html') != -1) {
+                $('.new-login').append($(this));
+            }
+        });
+        $('input[name=neu-user]').focus();
+        $('.new-login').on('click',function(e) {
+            e.preventDefault();
+            $('input[name=user]').val(document.querySelector('input[name=neu-user]').value);
+            $('input[name=pass]').val(document.querySelector('input[name=neu-pass]').value);
+        });
+        $('#wrap').append('<div class="footer-links">'+$('.footerlinks').html()+'</div>');
+    }
+
+    /* Prevent 1 hour timeout */
+    alertQueryCallback = function(){};
+
     /* Modify Tab data from a table to a list */
     $('#tabs_tda').each(function() {
         //.replace(/<tr/g,'<ul').replace(/<\/tr>/g,'</ul>').replace(/<td/g,'<li').replace(/<\/td>/g,'</li>')
@@ -134,17 +164,18 @@ function modernTheme() {
             $('.credits').css('opacity',0.2);
         }
     };
-    var timeoutId;
-    $(window).on('resize',function() {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(function() {
-            checkLove();
-        }, 50 );
-    })
-    $(document).ready(function ($) {
-        setTimeout(function() {
-            checkLove();
-        }, 50 );
-    });
-
+    if(window.location.pathname.indexOf('render') != -1) {
+        var timeoutId;
+        $(window).on('resize',function() {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function() {
+                checkLove();
+            }, 50 );
+        })
+        $(document).ready(function ($) {
+            setTimeout(function() {
+                checkLove();
+            }, 50 );
+        });
+    }
 }

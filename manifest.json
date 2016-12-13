@@ -40,6 +40,8 @@
         "fonts/fontawesome-webfont.woff",
         "fonts/fontawesome-webfont.woff2",
         "fonts/fontawesome-webfont.svg",
-        "img/logo.png"
+        "img/bg1.jpg",
+        "img/logo.png",
+        "img/myNEU.png"
     ]
 }

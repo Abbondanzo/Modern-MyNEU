@@ -66,7 +66,79 @@ ul {
     -webkit-padding-start: 0;
 }
 
-
+// Login styling
+html {
+    height: 100%;
+}
+.login {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    * {
+        box-sizing: border-box;
+    }
+    #wrap {
+        background: transparent;
+    }
+    #main, #sidebar, #footer {
+        display: none;
+    }
+    .new-login {
+        width: 350px;
+        margin: 0 auto;
+        position: absolute;
+    	top: 50%;
+        left: 50%;
+    	transform: translate(-50%,-50%);
+    }
+    img {
+        padding-bottom: 4em;
+    }
+    input {
+        padding: 1em;
+        font-family: Montserrat, sans-serif;
+        width: 100%;
+        border-radius: 4px;
+        border: 1px solid rgb(196, 196, 196);
+        margin-bottom: 10px;
+    }
+    button {
+        padding: 1em;
+        font-family: Montserrat, sans-serif;
+        width: 100%;
+        border-radius: 4px;
+        background-color: $primary;
+        border: none;
+        color: #fff;
+        margin: 20px 0;
+        cursor: pointer;
+        transition: 0.3s all;
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            background: darken($primary, 10);
+        }
+    }
+    li {
+        list-style: none;
+    }
+    a {
+        color: #fff;
+    }
+    .footer-links {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        li {
+            display: inline-block;
+            padding-right: 2em;
+            text-transform: uppercase;
+        }
+    }
+}
 // All navigation menus
 .mylogo {
     position: fixed;
