@@ -50,11 +50,16 @@ function modernTheme() {
             }
         });
         $('input[name=neu-user]').focus();
+        $('.new-login').on('change',function() {
+            var u = $('input[name=neu-user]').val();
+            var p = $('input[name=neu-pass]').val();
+            $('input[name=user]').val(u);
+            $('input[name=pass]').val(p);
+        });
         $('.new-login').on('click',function(e) {
             e.preventDefault();
-            $('input[name=user]').val(document.querySelector('input[name=neu-user]').value);
-            $('input[name=pass]').val(document.querySelector('input[name=neu-pass]').value);
         });
+
         $('#wrap').append('<div class="footer-links">'+$('.footerlinks').html()+'</div>');
     }
 
