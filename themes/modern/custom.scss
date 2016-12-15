@@ -165,6 +165,7 @@ html {
     height: $header;
     top: 0;
     right: $logout;
+    overflow: hidden;
     background: #fff;
     border-bottom: 1px solid $border;
     ul {
@@ -226,6 +227,9 @@ html {
             color: $primary;
             padding-right: 0.75em;
         }
+    }
+    a .sreduce > .fa {
+        display: none;
     }
     .search {
         padding-left: 2em;

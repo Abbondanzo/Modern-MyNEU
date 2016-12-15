@@ -63,7 +63,7 @@ function modernTheme() {
         $('#wrap').append('<div class="footer-links">'+$('.footerlinks').html()+'</div>');
     }
 
-    /* Prevent 1 hour timeout */
+    /* Prevent 1 hour timeout, needs timeout implementation/experimentation */
     alertQueryCallback = function(){};
 
     /* Modify Tab data from a table to a list */
@@ -159,6 +159,32 @@ function modernTheme() {
             };
         });
     });
+    /* Resizes top bar */
+    var widthOf = 1275;
+    function fixHeading() {
+        var heading = $('.heading');
+        // Overflow detection
+        if(heading.height() < heading.children().height()) {
+            $('.secondary').each(function() {
+                $(this).addClass('sreduce');
+                // Sets max width for overflow
+                if($(window).width() > widthOf) {
+                    widthOf = $(window).width();
+                }
+                if($(this).html().indexOf('Signed') != -1) {
+                    $(this).css('display','none');
+                }
+            });
+        } else if($(window).width() > widthOf) { // Checks at overflow width
+            $('.secondary').each(function() {
+                $(this).removeClass('sreduce');
+                if($(this).html().indexOf('Signed') != -1) {
+                    $(this).css('display','block');
+                }
+            });
+        }
+    }
+    /* Moves around credits on the links panel */
     function checkLove() {
         var offset = $('.nav').offset().top;
         var height = $('.nav').height();
@@ -169,17 +195,20 @@ function modernTheme() {
             $('.credits').css('opacity',0.2);
         }
     };
+    /* Only checks window resizing on main pages */
     if(window.location.pathname.indexOf('render') != -1) {
         var timeoutId;
         $(window).on('resize',function() {
             clearTimeout(timeoutId);
             timeoutId = setTimeout(function() {
                 checkLove();
+                fixHeading();
             }, 50 );
         })
         $(document).ready(function ($) {
             setTimeout(function() {
                 checkLove();
+                fixHeading();
             }, 50 );
         });
     }
