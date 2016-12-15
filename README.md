@@ -1,7 +1,5 @@
 # Modern-MyNEU
 Open-source browser plugin that takes apart Northeastern's MyNEU portal for a much cleaner, modern look.
-![Login Page](https://lh3.googleusercontent.com/ISwoK9dfy5yE0fklrFvAJ4Zqj6RG5fRPAoni_MfApXEwkAV0rpNG__-XmF6OCmknLaeGi--0=s640-h400-e365-rw)
-![Portal](https://lh3.googleusercontent.com/6nN2gfizNHLcuNV14PA2YvEcRbMQbglapFhM0r_vZ3NFTy9X3gaTUVfD_wPnvxw6ZQYS_6LyG9o=s640-h400-e365-rw)
 
 ## Installation
 The current Chrome Webstore version can be found [here](https://chrome.google.com/webstore/detail/modern-myneu/phpjhjbppfdgofldhpecojjdfccboblk)
