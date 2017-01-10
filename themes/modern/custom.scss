@@ -88,10 +88,16 @@ html {
     .new-login {
         width: 350px;
         margin: 0 auto;
+        @include display(flex);
+        @include flex-direction(column);
+        &::before, &::after {
+            content: "";
+            @include flex-grow(1);
+        }
         position: absolute;
-    	top: 50%;
+    	height: 100%;
         left: 50%;
-    	transform: translate(-50%,-50%);
+    	transform: translateX(-50%);
     }
     img {
         padding-bottom: 4em;

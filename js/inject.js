@@ -46,7 +46,7 @@ function modernTheme() {
         $('#wrap').append('<div class="new-login"><form><img src="'+chrome.extension.getURL('img/myNEU.png')+'"><br><input name="neu-user" placeholder="Username" type="text"><br><input name="neu-pass" placeholder="Password" type="password"><br><button onclick="javascript:login();return true;" onload="clearCache()">Log in</button></form></div>');
         $('.helplinks li').each(function() {
             if($(this).html().indexOf('password.html') != -1) {
-                $('.new-login').append($(this));
+                $('.new-login form').append($(this));
             }
         });
         $('input[name=neu-user]').focus();
