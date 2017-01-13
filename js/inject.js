@@ -31,6 +31,9 @@ function modernTheme() {
         }
     }); */
 
+    // Array of background images
+    var bgImages = ['bg1.jpg','bg2.jpg','bg3.jpg','bg4.jpg','bg5.jpg','bg6.jpg','bg7.jpg','bg8.jpg','bg9.jpg','bg10.jpg','bg11.jpg','bg12.jpg','bg13.jpg','bg14.jpg','bg15.jpg','bg16.jpg','bg17.jpg','bg18.jpg','bg19.jpg','bg20.jpg'];
+
     // Accelerate the logout session
     if(window.location.pathname.indexOf('logout') != -1) {
         window.location.pathname = "/";
@@ -41,7 +44,7 @@ function modernTheme() {
         // Adds styling indicator
         $('body').addClass('login');
         // Background--ready for future custom usage
-        $('body').css('background-image','url('+chrome.extension.getURL('img/bg1.jpg')+')');
+        $('body').css('background-image','url('+chrome.extension.getURL('img/'+bgImages[Math.floor(Math.random()*bgImages.length)])+')');
         // New prompt
         $('#wrap').append('<div class="new-login"><form><img src="'+chrome.extension.getURL('img/myNEU.png')+'"><br><input name="neu-user" placeholder="Username" type="text"><br><input name="neu-pass" placeholder="Password" type="password"><br><button onclick="javascript:login();return true;" onload="clearCache()">Log in</button></form></div>');
         $('.helplinks li').each(function() {
