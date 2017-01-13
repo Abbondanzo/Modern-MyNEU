@@ -43,7 +43,7 @@ function modernTheme() {
     if(window.location.pathname == "/cp/home/displaylogin") {
         // Adds styling indicator
         $('body').addClass('login');
-        // Background--ready for future custom usage
+        // Random background from the array above
         $('body').css('background-image','url('+chrome.extension.getURL('img/'+bgImages[Math.floor(Math.random()*bgImages.length)])+')');
         // New prompt
         $('#wrap').append('<div class="new-login"><form><img src="'+chrome.extension.getURL('img/myNEU.png')+'"><br><input name="neu-user" placeholder="Username" type="text"><br><input name="neu-pass" placeholder="Password" type="password"><br><button onclick="javascript:login();return true;" onload="clearCache()">Log in</button></form></div>');
