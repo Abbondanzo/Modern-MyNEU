@@ -154,7 +154,8 @@ function modernTheme() {
     $('#searchQuery').on('keypress change keydown paste input', function() {
         var query = $(this).val().toLowerCase();
         $('.uportal-background-content td table').each(function() {
-            var html = $(this).html().toLowerCase().replace(/<.*?>/g,'');
+            // Replaces all HTML tags, script, and style settings
+            var html = $(this).html().toLowerCase().replace(/<style(.|\s)*?style>/g,'').replace(/<script(.|\s)*?script>/g,'').replace(/<.*?>/g,'');
             if (html.indexOf(query) != -1) {
                  $(this).css('display','table');
             } else {
@@ -214,5 +215,19 @@ function modernTheme() {
                 fixHeading();
             }, 50 );
         });
+    }
+    /* wl11gp pages */
+    // Removes 'Search' text
+    $('.headerlinksdiv2 form').each(function() {
+        var html = $(this).html();
+        if(html.indexOf('Search') != -1) {
+            $(this).html(html.slice(7, -1));
+            $('input[type=text]').attr('placeholder','Search');
+        }
+    });
+    // Adds title to content
+    if(window.location.pathname.indexOf('udcprod8') != -1) {
+        var title = $('.pagetitlediv').find('h2').html();
+        $('.pagebodydiv').prepend('<h2>'+title+'</h2>');
     }
 }

@@ -321,6 +321,122 @@ div {
     }
 }
 
+// Student Info
+.campuspipeline {
+    margin: 0!important;
+}
+.headerwrapperdiv {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e4e4e4;
+    .headerlinksdiv {
+        display: inline-block;
+        width: 50%;
+        margin: 0;
+        p {
+            margin: 0;
+        }
+        .plaintable {
+            width: 100%;
+            td {
+                vertical-align: middle;
+            }
+            .bgtaboff {
+                display: none;
+            }
+            .taboff, .tabon {
+                padding-left: 0;
+                background: transparent;
+                height: 60px;
+                a {
+                    padding: 2em;
+                    color: #63636b;
+                }
+            }
+            .taboff {
+                a {
+                    &:hover {
+                        @include animation( slideInUp 0.2s forwards );
+                    }
+                }
+            }
+            .tabon {
+                a {
+                    color: $primary;
+                    box-shadow: inset 0 (-$inset) 0 0 $primary;
+                }
+            }
+        }
+    }
+    .plaintable {
+        display: inline-block;
+        width: 50%;
+        float: right;
+        height: 60px;
+        tbody {
+            tr {
+                height: 56px;
+            }
+        }
+        .pldefault {
+            padding: 0;
+            vertical-align: middle;
+            .rightaligntext {
+                width: 200px;
+                -webkit-margin-before: 0;
+                -webkit-margin-after: 0;
+            }
+            .pageheaderlinks {
+                font-size: 10px;
+            }
+        }
+    }
+    .headerlinksdiv2 {
+        .fieldlabeltextinvisible {
+            display: none;
+        }
+        span, input {
+            display: inline-block;
+        }
+        input[type="text"] {
+            background: #fafafa;
+            border: 1px solid #fff;
+            border-radius: 99px;
+            padding: 1.2em 4em 1.2em 2.5em;;
+            font-family: $font;
+            width: 50%;
+            &:focus {
+                outline: none;
+                border: 1px solid $border;
+            }
+        }
+    }
+}
+.pagetitlediv {
+    display: none;
+}
+.pagebodydiv {
+    background: #fff;
+    margin: 80px 20px 20px 20px;
+    padding: 1.5em;
+    border: 1px solid #e4e4e4;
+    h2 {
+        margin: 0;
+        padding-bottom: 0.5em;
+        font-family: "Montserrat",sans-serif !important;
+        color: $primary;
+        font-size: 1em;
+    }
+}
+.pagefooterdiv, .banner_copyright {
+    width: 100%;
+    opacity: 0.1;
+    text-align: center!important;
+}
+
 // Tables
 .bgmlight, .bg3, .bgtabon, .cpdate {
     display: none;
