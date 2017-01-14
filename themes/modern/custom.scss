@@ -413,6 +413,20 @@ div {
                 border: 1px solid $border;
             }
         }
+        input[type="submit"] {
+            background: $primary;
+            border: 0;
+            color: #fff;
+            padding: 1em;
+            cursor: pointer;
+            @include transition( background 0.25s );
+            &:hover {
+                background: #ca1f23;
+            }
+            &:focus {
+                outline: line;
+            }
+        }
     }
 }
 .pagetitlediv {
@@ -435,6 +449,31 @@ div {
     width: 100%;
     opacity: 0.1;
     text-align: center!important;
+}
+@media screen and (max-width: 660px) {
+    .pldefault {
+        .pageheaderlinks {
+            a {
+                display: none;
+            }
+        }
+    }
+    .headerwrapperdiv {
+        .plaintable {
+            width: 25%;
+        }
+        .headerlinksdiv {
+            width: 75%;
+            .plaintable {
+                min-width: 280px;
+                .tabon, .taboff {
+                    a {
+                        padding: 2em 1em;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Tables
