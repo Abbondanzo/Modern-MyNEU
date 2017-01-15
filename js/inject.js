@@ -225,9 +225,21 @@ function modernTheme() {
             $('input[type=text]').attr('placeholder','Search');
         }
     });
-    // Adds title to content
+    // Run on wl11gp
     if(window.location.pathname.indexOf('udcprod8') != -1) {
+        // Adds title to content
         var title = $('.pagetitlediv').find('h2').html();
         $('.pagebodydiv').prepend('<h2>'+title+'</h2>');
+        // Places icon in front of each link
+        $('.submenulinktext2').each(function() {
+            var html = $(this).html();
+            if (html.indexOf('RETURN TO MENU') != -1) {
+                $(this).html('<i class="fa fa-reply" aria-hidden="true"></i>'+html);
+            } else if (html.indexOf('SITE MAP') != -1) {
+                $(this).html('<i class="fa fa-list" aria-hidden="true"></i>'+html);
+            } else if (html.indexOf('HELP') != -1) {
+                $(this).html('<i class="fa fa-life-ring" aria-hidden="true"></i>'+html);
+            }
+        });
     }
 }
