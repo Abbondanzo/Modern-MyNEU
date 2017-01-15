@@ -353,7 +353,7 @@ div {
                 height: 60px;
                 a {
                     padding: 2em;
-                    color: #63636b;
+                    color: $textcolor;
                 }
             }
             .taboff {
@@ -376,6 +376,7 @@ div {
         width: 50%;
         float: right;
         height: 60px;
+        overflow: hidden;
         tbody {
             tr {
                 height: 56px;
@@ -401,31 +402,46 @@ div {
         span, input {
             display: inline-block;
         }
-        input[type="text"] {
-            background: #fafafa;
-            border: 1px solid #fff;
-            border-radius: 99px;
-            padding: 1.2em 4em 1.2em 2.5em;;
-            font-family: $font;
-            width: 50%;
-            &:focus {
-                outline: none;
-                border: 1px solid $border;
+        form {
+            min-width: 250px;
+            input[type="text"] {
+                background: #fafafa;
+                border: 1px solid #fff;
+                border-radius: 99px;
+                padding: 1.2em 4em 1.2em 2.5em;;
+                font-family: $font;
+                width: 50%;
+                &:focus {
+                    outline: none;
+                    border: 1px solid $border;
+                }
+            }
+            input[type="submit"] {
+                background: $primary;
+                border: 0;
+                color: #fff;
+                padding: 1em;
+                cursor: pointer;
+                @include transition( background 0.25s );
+                &:hover {
+                    background: #ca1f23;
+                }
+                &:focus {
+                    outline: line;
+                }
             }
         }
-        input[type="submit"] {
-            background: $primary;
-            border: 0;
-            color: #fff;
-            padding: 1em;
-            cursor: pointer;
-            @include transition( background 0.25s );
-            &:hover {
-                background: #ca1f23;
-            }
-            &:focus {
-                outline: line;
-            }
+    }
+    .submenulinktext2 {
+        color: $textcolor;
+        @include transition( color 0.25s );
+        &:hover {
+            color: $primary;
+            text-decoration: none;
+        }
+        i {
+            padding: 0 0.5em;
+            color: $primary;
         }
     }
 }
@@ -460,10 +476,10 @@ div {
     }
     .headerwrapperdiv {
         .plaintable {
-            width: 25%;
+            width: 50%;
         }
         .headerlinksdiv {
-            width: 75%;
+            width: 50%;
             .plaintable {
                 min-width: 280px;
                 .tabon, .taboff {
@@ -472,6 +488,13 @@ div {
                     }
                 }
             }
+        }
+    }
+}
+@media screen and (max-width: 1050px) {
+    .submenulinktext2 {
+        span {
+            display: none;
         }
     }
 }

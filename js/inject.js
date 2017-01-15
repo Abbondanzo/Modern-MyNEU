@@ -234,11 +234,11 @@ function modernTheme() {
         $('.submenulinktext2').each(function() {
             var html = $(this).html();
             if (html.indexOf('RETURN TO MENU') != -1) {
-                $(this).html('<i class="fa fa-reply" aria-hidden="true"></i>'+html);
+                $(this).html('<i title="Return to Menu" class="fa fa-reply" aria-hidden="true"></i>'+'<span>'+html+'</span>');
             } else if (html.indexOf('SITE MAP') != -1) {
-                $(this).html('<i class="fa fa-list" aria-hidden="true"></i>'+html);
+                $(this).html('<i title="Site Map" class="fa fa-list" aria-hidden="true"></i>'+'<span>'+html+'</span>');
             } else if (html.indexOf('HELP') != -1) {
-                $(this).html('<i class="fa fa-life-ring" aria-hidden="true"></i>'+html);
+                $(this).html('<i title="Help" class="fa fa-life-ring" aria-hidden="true"></i>'+'<span>'+html+'</span>');
             }
         });
     }
