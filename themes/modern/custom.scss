@@ -37,9 +37,11 @@ $font: 'Montserrat', sans-serif;
     color: $primary!important;
 }
 
-*::selection {
-    background: $primary;
-    color: #fff;
+* {
+    &::selection {
+        background: $primary;
+        color: #fff;
+    }
 }
 
 html {
@@ -109,6 +111,9 @@ html {
         border-radius: 4px;
         border: 1px solid rgb(196, 196, 196);
         margin-bottom: 10px;
+        &[type="submit"] {
+            outline: none!important;
+        }
     }
     button {
         padding: 1em;
@@ -427,16 +432,20 @@ div {
                     background: #ca1f23;
                 }
                 &:focus {
-                    outline: line;
+                    outline: none;
+                    background: #ca1f23;
                 }
             }
         }
     }
     .submenulinktext2 {
         color: $textcolor;
+        &:visited {
+            color: $textcolor;
+        }
         @include transition( color 0.25s );
         &:hover {
-            color: $primary;
+            color: $primary!important;
             text-decoration: none;
         }
         i {
@@ -463,8 +472,14 @@ div {
 }
 .pagefooterdiv, .banner_copyright {
     width: 100%;
-    opacity: 0.1;
+    opacity: 0.2;
     text-align: center!important;
+}
+// Transcript table
+.datadisplaytable {
+    .dddefault {
+        border-bottom: 1px solid #ddd;
+    }
 }
 @media screen and (max-width: 660px) {
     .pldefault {
@@ -496,6 +511,15 @@ div {
         span {
             display: none;
         }
+    }
+}
+// Changes to page print view
+@media print {
+    .headerwrapperdiv {
+        display: none;
+    }
+    .pagebodydiv {
+        margin: 20px;
     }
 }
 
