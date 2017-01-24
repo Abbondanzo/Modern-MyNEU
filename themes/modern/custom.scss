@@ -73,9 +73,12 @@ ul {
 	position: relative;
 	width: 300px;
 	font-family: Montserrat, sans-serif;
+	select {
+		display: none;
+	}
 	.current {
 		cursor: pointer;
-		padding: 6px;
+		padding: 0.5em 1em;
 		background-color: red;
 	}
 	.options {
@@ -84,14 +87,15 @@ ul {
 		position: absolute;
 		top: 0;
 		left: 0;
+		width: 300px;
+		box-sizing: border-box;
 		overflow: auto;
 		max-height: 300px;
-		padding: 3px;
 		color: white;
 		background: #333;
 		transition: 0.2s;
 		.option {
-			padding: 3px;
+			padding: 0.5em 1em;
 			cursor: pointer;
 			&:hover {
 				background-color: rgba(white, 0.2);
@@ -99,7 +103,6 @@ ul {
 		}
 	}
 	&.active {
-		text-transform: uppercase;
 		.options {
 			display: block;
 		}
