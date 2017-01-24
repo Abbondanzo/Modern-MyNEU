@@ -68,6 +68,43 @@ ul {
     -webkit-padding-start: 0;
 }
 
+// Fancy select box
+.select {
+	position: relative;
+	width: 300px;
+	font-family: Montserrat, sans-serif;
+	.current {
+		cursor: pointer;
+		padding: 6px;
+		background-color: red;
+	}
+	.options {
+		display: none;
+		z-index: 999999;
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow: auto;
+		max-height: 300px;
+		padding: 3px;
+		color: white;
+		background: #333;
+		transition: 0.2s;
+		.option {
+			padding: 3px;
+			&:hover {
+				background-color: rgba(white, 0.2);
+			}
+		}
+	}
+	&.active {
+		text-transform: uppercase;
+		.options {
+			display: block;
+		}
+	}
+}
+
 // Login styling
 html {
     height: 100%;

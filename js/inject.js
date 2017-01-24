@@ -242,4 +242,28 @@ function modernTheme() {
             }
         });
     }
+
+    /* Fancy select boxes */
+    $('select:not([multiple])').each(function() {
+        $(this).wrap('<div class="select"></div>');
+		var opts = this.options;
+		var current = $('<div class="current">' + opts[0].innerHTML.trim() + '</div>');
+		$(this).before(current);
+		var options = '<div class="options">';
+		for(var i = 0; i < opts.length; i++) {
+			options += '<div class="option">' + opts[i].innerHTML.trim() + '</div>';
+		}
+		options += '</div>';
+		$(this).after(options);
+
+		current.click(function(e) {
+			e.stopPropagation();
+			$(".select").removeClass("active");
+			$(this).parent(".select").addClass("active");
+		});
+    });
+
+	$(document).click(function() {
+		$(".select").removeClass("active");
+	});
 }
