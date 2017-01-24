@@ -92,6 +92,7 @@ ul {
 		transition: 0.2s;
 		.option {
 			padding: 3px;
+			cursor: pointer;
 			&:hover {
 				background-color: rgba(white, 0.2);
 			}

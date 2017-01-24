@@ -245,21 +245,29 @@ function modernTheme() {
 
     /* Fancy select boxes */
     $('select:not([multiple])').each(function() {
-        $(this).wrap('<div class="select"></div>');
-		var opts = this.options;
-		var current = $('<div class="current">' + opts[0].innerHTML.trim() + '</div>');
-		$(this).before(current);
-		var options = '<div class="options">';
+		var sb = this;
+        $(sb).wrap('<div class="select"></div>');
+		var opts = sb.options;
+		var $current = $('<div class="current">' + opts[opts.selectedIndex].innerHTML.trim() + '</div>');
+		$(sb).before($current);
+		var optionsDiv = '<div class="options">';
 		for(var i = 0; i < opts.length; i++) {
-			options += '<div class="option">' + opts[i].innerHTML.trim() + '</div>';
+			optionsDiv += '<div class="option" data-value="' + opts[i].value + '">' + opts[i].innerHTML.trim() + '</div>';
 		}
-		options += '</div>';
-		$(this).after(options);
+		var $options = $(optionsDiv + '</div>');
+		$(sb).after($options);
 
-		current.click(function(e) {
+		$current.click(function(e) {
 			e.stopPropagation();
 			$(".select").removeClass("active");
-			$(this).parent(".select").addClass("active");
+			$(sb).parent(".select").addClass("active");
+		});
+
+		$options.find(".option").click(function(e) {
+			e.stopPropagation();
+			$current.html(this.innerHTML);
+			sb.value = $(this).data("value");
+			$(sb).parent(".select").removeClass("active");
 		});
     });
 
