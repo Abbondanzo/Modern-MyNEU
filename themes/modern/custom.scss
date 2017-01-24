@@ -80,6 +80,7 @@ ul {
 	.current {
 		cursor: pointer;
 		padding: 0.5em 1em;
+		padding-right: 2em;
 		background-color: whitesmoke;
 		border: 1px solid #ccc;
 		border-radius: 4px;
@@ -87,7 +88,7 @@ ul {
 			content: "";
 			position: absolute;
 			top: 1em;
-			right: 1em;
+			right: 0.75em;
 			width: 0;
 			height: 0;
 			border: 0.5em solid transparent;
