@@ -495,13 +495,13 @@ div {
 // Transcript table
 .datadisplaytable {
     border-spacing: 0;
-    a, a:visited {
-        color: #ddd;
-    }
     .ddtitle {
         background: #3a3838;
         color: #fff;
         padding: 1em;
+	    a, a:visited {
+	        color: #ddd;
+	    }
     }
     .ddheader {
         background: #636363;
