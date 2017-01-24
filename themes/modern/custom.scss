@@ -71,7 +71,7 @@ ul {
 // Fancy select box
 .select {
 	position: relative;
-	width: 300px;
+	width: 100px;
 	font-family: $font;
 	font-size: 90%;
 	select {
@@ -104,7 +104,7 @@ ul {
 		top: 115%;
 		left: 0;
 		overflow: auto;
-		width: 300px;
+		width: 100px;
 		max-height: 300px;
 		background: white;
 		border: 1px solid #ccc;
@@ -138,6 +138,13 @@ ul {
 	::-webkit-scrollbar-thumb {
 		border-radius: 4px;
 		background: $primary;
+	}
+}
+
+.dedefault .select {
+	width: 300px;
+	.options {
+		width: 300px;
 	}
 }
 
