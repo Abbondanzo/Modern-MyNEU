@@ -259,8 +259,9 @@ function modernTheme() {
 
 		$current.click(function(e) {
 			e.stopPropagation();
-			$(".select").removeClass("active");
-			$(sb).parent(".select").addClass("active");
+			var $select = $(sb).parent(".select");
+			$select.toggleClass("active");
+			$(".select").not($select).removeClass("active");
 		});
 
 		$options.find(".option").click(function(e) {
