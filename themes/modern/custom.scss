@@ -73,39 +73,70 @@ ul {
 	position: relative;
 	width: 300px;
 	font-family: $font;
+	font-size: 90%;
 	select {
 		display: none;
 	}
 	.current {
 		cursor: pointer;
 		padding: 0.5em 1em;
-		background-color: red;
+		background-color: whitesmoke;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		&::after {
+			content: "";
+			position: absolute;
+			top: 1em;
+			right: 1em;
+			width: 0;
+			height: 0;
+			border: 0.5em solid transparent;
+			border-color: #ccc transparent transparent transparent;
+			transition: 0.3s;
+		}
 	}
 	.options {
 		display: none;
 		z-index: 999999;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 300px;
 		box-sizing: border-box;
+		position: absolute;
+		top: 110%;
+		left: 0;
 		overflow: auto;
+		width: 300px;
 		max-height: 300px;
-		color: white;
-		background: #333;
-		transition: 0.2s;
+		background: white;
+		border: 1px solid #ccc;
+		border-radius: 4px;
 		.option {
-			padding: 0.5em 1em;
 			cursor: pointer;
+			border-bottom: 1px solid $border;
+			padding: 0.5em 1em;
 			&:hover {
-				background-color: rgba(white, 0.2);
+				color: white;
+				background-color: $primary;
 			}
 		}
 	}
 	&.active {
+		.current::after {
+			top: 0.5em;
+			border-color: transparent transparent #ccc transparent;
+		}
 		.options {
 			display: block;
+			box-shadow: 0 3px 6px -1px #ccc;
 		}
+	}
+	::-webkit-scrollbar {
+		width: 0.75em;
+	}
+	::-webkit-scrollbar-track {
+		background-color: whitesmoke;
+	}
+	::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background: $primary;
 	}
 }
 
