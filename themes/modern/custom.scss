@@ -100,7 +100,7 @@ ul {
 		z-index: 999999;
 		box-sizing: border-box;
 		position: absolute;
-		top: 110%;
+		top: 115%;
 		left: 0;
 		overflow: auto;
 		width: 300px;
@@ -500,12 +500,9 @@ div {
                 padding: 1em;
                 cursor: pointer;
                 @include transition( background 0.25s );
-                &:hover {
-                    background: #ca1f23;
-                }
-                &:focus {
-                    outline: none;
-                    background: #ca1f23;
+                &:hover, &:focus {
+	                outline: none;
+	                background: shade($primary, 25);
                 }
             }
         }
@@ -544,18 +541,27 @@ div {
     form {
         input[type="submit"] {
             background: $primary;
-                border: 0;
-                color: #fff;
-                padding: 0.5em 1em;
-                cursor: pointer;
-                @include transition( background 0.25s );
-                &:hover {
-                    background: #ca1f23;
-                }
-                &:focus {
-                    outline: none;
-                    background: #ca1f23;
-                }
+            border: 0;
+            color: #fff;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            @include transition( background 0.25s );
+            &:hover, &:focus {
+                outline: none;
+                background: shade($primary, 25);
+            }
+        }
+        input[type="reset"] {
+            background: $textcolor;
+            border: 0;
+            color: #fff;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            @include transition( background 0.25s );
+            &:hover, &:focus {
+                outline: none;
+                background: shade($textcolor, 25);
+            }
         }
     }
 }
@@ -563,6 +569,9 @@ div {
     width: 100%;
     opacity: 0.2;
     text-align: center!important;
+}
+table td.delabel {
+	vertical-align: middle;
 }
 // Transcript table
 .datadisplaytable {
