@@ -540,9 +540,10 @@ div {
         font-size: 1em;
     }
     form {
-        input[type="submit"] {
+        input[type="submit"], input[type="reset"] {
             background: $primary;
             border: 0;
+			border-radius: 4px;
             color: #fff;
             padding: 0.5em 1em;
             cursor: pointer;
@@ -554,13 +555,7 @@ div {
         }
         input[type="reset"] {
             background: $textcolor;
-            border: 0;
-            color: #fff;
-            padding: 0.5em 1em;
-            cursor: pointer;
-            @include transition( background 0.25s );
             &:hover, &:focus {
-                outline: none;
                 background: shade($textcolor, 25);
             }
         }
