@@ -469,6 +469,23 @@ div {
         color: $primary;
         font-size: 1em;
     }
+    form {
+        input[type="submit"] {
+            background: $primary;
+                border: 0;
+                color: #fff;
+                padding: 0.5em 1em;
+                cursor: pointer;
+                @include transition( background 0.25s );
+                &:hover {
+                    background: #ca1f23;
+                }
+                &:focus {
+                    outline: none;
+                    background: #ca1f23;
+                }
+        }
+    }
 }
 .pagefooterdiv, .banner_copyright {
     width: 100%;
@@ -477,8 +494,31 @@ div {
 }
 // Transcript table
 .datadisplaytable {
+    border-spacing: 0;
+    a, a:visited {
+        color: #ddd;
+    }
+    .ddtitle {
+        background: #3a3838;
+        color: #fff;
+        padding: 1em;
+    }
+    .ddheader {
+        background: #636363;
+        color: #fff;
+        padding: 1em;
+        font-size: 75%;
+        vertical-align: middle;
+    }
     .dddefault {
         border-bottom: 1px solid #ddd;
+        vertical-align: middle;
+    }
+    .ddlabel {
+        padding: 1em;
+        .fieldOrangetextbold {
+            color: $primary;
+        }
     }
 }
 @media screen and (max-width: 660px) {
