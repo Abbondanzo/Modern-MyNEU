@@ -68,6 +68,86 @@ ul {
     -webkit-padding-start: 0;
 }
 
+// Fancy select box
+.select {
+	position: relative;
+	width: 100px;
+	font-family: $font;
+	font-size: 90%;
+	select {
+		display: none;
+	}
+	.current {
+		cursor: pointer;
+		padding: 0.5em 1em;
+		padding-right: 2em;
+		background-color: whitesmoke;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		&::after {
+			content: "";
+			position: absolute;
+			top: 1em;
+			right: 0.75em;
+			width: 0;
+			height: 0;
+			border: 0.5em solid transparent;
+			border-color: #ccc transparent transparent transparent;
+			transition: 0.3s;
+		}
+	}
+	.options {
+		display: none;
+		z-index: 999999;
+		box-sizing: border-box;
+		position: absolute;
+		top: 115%;
+		left: 0;
+		overflow: auto;
+		width: 100px;
+		max-height: 300px;
+		background: white;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		.option {
+			cursor: pointer;
+			border-bottom: 1px solid $border;
+			padding: 0.5em 1em;
+			&:hover {
+				color: white;
+				background-color: $primary;
+			}
+		}
+	}
+	&.active {
+		.current::after {
+			top: 0.5em;
+			border-color: transparent transparent #ccc transparent;
+		}
+		.options {
+			display: block;
+			box-shadow: 0 3px 6px -1px #ccc;
+		}
+	}
+	::-webkit-scrollbar {
+		width: 0.75em;
+	}
+	::-webkit-scrollbar-track {
+		background-color: whitesmoke;
+	}
+	::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background: $primary;
+	}
+}
+
+.dedefault .select {
+	width: 300px;
+	.options {
+		width: 300px;
+	}
+}
+
 // Login styling
 html {
     height: 100%;
@@ -106,7 +186,7 @@ html {
     }
     input {
         padding: 1em;
-        font-family: Montserrat, sans-serif;
+        font-family: $font;
         width: 100%;
         border-radius: 4px;
         border: 1px solid rgb(196, 196, 196);
@@ -117,7 +197,7 @@ html {
     }
     button {
         padding: 1em;
-        font-family: Montserrat, sans-serif;
+        font-family: $font;
         width: 100%;
         border-radius: 4px;
         background-color: $primary;
@@ -428,12 +508,9 @@ div {
                 padding: 1em;
                 cursor: pointer;
                 @include transition( background 0.25s );
-                &:hover {
-                    background: #ca1f23;
-                }
-                &:focus {
-                    outline: none;
-                    background: #ca1f23;
+                &:hover, &:focus {
+	                outline: none;
+	                background: shade($primary, 25);
                 }
             }
         }
@@ -465,25 +542,29 @@ div {
     h2 {
         margin: 0;
         padding-bottom: 0.5em;
-        font-family: "Montserrat",sans-serif !important;
+        font-family: $font !important;
         color: $primary;
         font-size: 1em;
     }
     form {
-        input[type="submit"] {
+        input[type="submit"], input[type="reset"] {
             background: $primary;
-                border: 0;
-                color: #fff;
-                padding: 0.5em 1em;
-                cursor: pointer;
-                @include transition( background 0.25s );
-                &:hover {
-                    background: #ca1f23;
-                }
-                &:focus {
-                    outline: none;
-                    background: #ca1f23;
-                }
+            border: 0;
+			border-radius: 4px;
+            color: #fff;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            @include transition( background 0.25s );
+            &:hover, &:focus {
+                outline: none;
+                background: shade($primary, 25);
+            }
+        }
+        input[type="reset"] {
+            background: $textcolor;
+            &:hover, &:focus {
+                background: shade($textcolor, 25);
+            }
         }
     }
 }
@@ -492,16 +573,19 @@ div {
     opacity: 0.2;
     text-align: center!important;
 }
+table td.delabel {
+	vertical-align: middle;
+}
 // Transcript table
 .datadisplaytable {
     border-spacing: 0;
-    a, a:visited {
-        color: #ddd;
-    }
     .ddtitle {
         background: #3a3838;
         color: #fff;
         padding: 1em;
+	    a, a:visited {
+	        color: #ddd;
+	    }
     }
     .ddheader {
         background: #636363;

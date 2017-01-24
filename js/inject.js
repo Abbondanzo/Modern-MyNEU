@@ -242,4 +242,37 @@ function modernTheme() {
             }
         });
     }
+
+    /* Fancy select boxes */
+    $('select:not([multiple])').each(function() {
+		var sb = this;
+        $(sb).wrap('<div class="select"></div>');
+		var opts = sb.options;
+		var $current = $('<div class="current">' + opts[opts.selectedIndex].innerHTML.trim() + '</div>');
+		$(sb).before($current);
+		var optionsDiv = '<div class="options">';
+		for(var i = 0; i < opts.length; i++) {
+			optionsDiv += '<div class="option" data-value="' + opts[i].value + '">' + opts[i].innerHTML.trim() + '</div>';
+		}
+		var $options = $(optionsDiv + '</div>');
+		$(sb).after($options);
+
+		$current.click(function(e) {
+			e.stopPropagation();
+			var $select = $(sb).parent(".select");
+			$select.toggleClass("active");
+			$(".select").not($select).removeClass("active");
+		});
+
+		$options.find(".option").click(function(e) {
+			e.stopPropagation();
+			$current.html(this.innerHTML);
+			sb.value = $(this).data("value");
+			$(sb).parent(".select").removeClass("active");
+		});
+    });
+
+	$(document).click(function() {
+		$(".select").removeClass("active");
+	});
 }
