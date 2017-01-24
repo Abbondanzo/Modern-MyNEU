@@ -18,10 +18,10 @@ value "popup.html".
         width: 300px;
         margin: 0;
         color: #444;
+        background: #fafafa;
     }
     .title-head {
-        width: 100%;
-        background: #2c2c30;
+        background: #ea1f23;
         padding: 10px;
         color: #fff;
     }
@@ -39,28 +39,42 @@ value "popup.html".
     table {
         width: 100%;
         padding-top: 1em;
+        border-collapse: collapse;
+    }
+    tbody {
+        padding: 10px 0;
+        display: block;
+    }
+    tr {
+        background: #fff;
+        margin: 10px 15px 0 15px;
+        padding: 10px 20px;
+        display: block;
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(224, 224, 224);
+        box-shadow: 0px 2px 3.52px 0.48px rgba(0, 0, 0, 0.05);
     }
     td {
         width: 50%;
         vertical-align: middle;
         text-align: center;
-        padding: 0 8px 1em 8px;
     }
     button {
         font-family: "Montserrat", sans-serif;
         position: relative;
-        width: 140px;
+        width: 100px;
         -webkit-user-select:none;
         -moz-user-select:none;
         -ms-user-select: none;
         display: block;
         overflow: hidden;
         cursor: pointer;
-        height: 40px;
+        height: 30px;
         padding: 0;
         line-height: 20px;
-        border: 2px solid #999999;
-        border-radius: 40px;
+        border: 1px solid #b5b5b5;
+        border-radius: 30px;
         background-color: #EEEEEE;
         transition: background-color 0.3s ease-in;
     }
@@ -72,33 +86,52 @@ value "popup.html".
     button::before {
         content: "";
         display: block;
-        width: 32px;
+        width: 23px;
         margin: 0px;
         background: #FFFFFF;
         position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 98px;
-        border: 2px solid #999999;
+        top: 2px;
+        bottom: 2px;
+        right: 69px;
+        border: 1px solid #999999;
         border-radius: 40px;
         transition: all 0.3s ease-in 0s;
     }
     #enable[value=true]::before {
-        border-color: #8CE196;
-        right: 0px;
+        border-color: #ea1f23;
+        right: 2px;
     }
     #enable[value=true] {
-        background-color: #8CE196;
+        background-color: #ea1f23;
         color: #fff;
     }
     select {
-        width: 140px;
-        height: 40px;
+        width: 110px;
+        height: 36px;
+        border-radius: 4px;
+        font-family: "Montserrat", sans-serif;
+        margin-left: 30px;
+        padding-left: 10px;
     }
     .help {
-        font-size: 10px;
-        opacity: 0.6;
-        padding: 10px;
+        font-size: 9px;
+        opacity: 0.4;
+        padding: 10px 0 20px 0;
+    }
+    .options {
+        width: 300px;
+        background: #fff;
+        padding: 20px 0;
+        border-top-width: 1px;
+    	border-top: 1px solid rgb(224, 224, 224);
+        text-decoration: none;
+    }
+    .options img {
+        height: 12px;
+        width: 12px;
+        margin-bottom: -1px;
+        padding-right: 0.25em;
+        x: 0.5em;
     }
     </style>
 
@@ -134,10 +167,12 @@ value "popup.html".
             </td>
         </tr>
     </table>
-    <p style="padding:10px;font-size:10px;">More settings coming soon. I'm brand new to this whole "Chrome storage" thing so I'm constantly tinkering with the back-end. I'm also adjusting this current theme to work on pop-up windows, as well as building two new features--theme customization and movable widget layouts.</p>
     <div class="help">
         <p>Any questions or bugs? Report them by <a target="_new" href="https://github.com/Abbondanzo/Modern-MyNEU/issues">clicking here</a></p>
     </div>
+    <a href="options.html" target="_blank" style="text-decoration: none;">
+        <p class="options"><img src="img/wrench.png"> More Options</p>
+    </a>
     <div id="status"></div>
 </body>
 <script src="js/popup.js"></script>
