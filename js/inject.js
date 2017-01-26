@@ -279,7 +279,7 @@ function modernTheme() {
         var $current = $('<div class="current">' + opts[0].innerHTML.trim() + '</div>');
         $(sb).before($current);
         var optionsDiv = '<div class="options" style="width: 300px;">';
-        var $search = $('<input type="text" placeholder="Search..." class="search">');
+        var $search = $('<input type="text" placeholder="Search... (Coming soon!)" class="search" disabled>');
         for(var i = 0; i < opts.length; i++) {
             optionsDiv += '<div class="option' + (opts[i].selected ? " selected" : "") + '" data-value="' + opts[i].value + '">' + opts[i].innerHTML.trim() + '</div>';
         }
