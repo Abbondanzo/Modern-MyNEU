@@ -245,34 +245,90 @@ function modernTheme() {
 
     /* Fancy select boxes */
     $('select:not([multiple])').each(function() {
-		var sb = this;
+        var sb = this;
         $(sb).wrap('<div class="select"></div>');
-		var opts = sb.options;
-		var $current = $('<div class="current">' + opts[opts.selectedIndex].innerHTML.trim() + '</div>');
-		$(sb).before($current);
-		var optionsDiv = '<div class="options">';
-		for(var i = 0; i < opts.length; i++) {
-			optionsDiv += '<div class="option" data-value="' + opts[i].value + '">' + opts[i].innerHTML.trim() + '</div>';
-		}
-		var $options = $(optionsDiv + '</div>');
-		$(sb).after($options);
+        var opts = sb.options;
+        var $current = $('<div class="current">' + opts[opts.selectedIndex].innerHTML.trim() + '</div>');
+        $(sb).before($current);
+        var optionsDiv = '<div class="options">';
+        for(var i = 0; i < opts.length; i++) {
+            optionsDiv += '<div class="option" data-value="' + opts[i].value + '">' + opts[i].innerHTML.trim() + '</div>';
+        }
+        var $options = $(optionsDiv + '</div>');
+        $(sb).after($options);
 
-		$current.click(function(e) {
-			e.stopPropagation();
-			var $select = $(sb).parent(".select");
-			$select.toggleClass("active");
-			$(".select").not($select).removeClass("active");
-		});
+        $current.click(function(e) {
+            e.stopPropagation();
+            var $select = $(sb).parent(".select");
+            $select.toggleClass("active");
+            $(".select").not($select).removeClass("active");
+        });
 
-		$options.find(".option").click(function(e) {
-			e.stopPropagation();
-			$current.html(this.innerHTML);
-			sb.value = $(this).data("value");
-			$(sb).parent(".select").removeClass("active");
-		});
+        $options.find(".option").click(function(e) {
+            e.stopPropagation();
+            $current.html(this.innerHTML);
+            sb.value = $(this).data("value");
+            $(sb).parent(".select").removeClass("active");
+        });
     });
 
-	$(document).click(function() {
-		$(".select").removeClass("active");
-	});
+    $('select[multiple]').each(function() {
+        var sb = this;
+        $(sb).wrap('<div class="select" style="width: 300px;"></div>');
+        var opts = sb.options;
+        var $current = $('<div class="current">' + opts[0].innerHTML.trim() + '</div>');
+        $(sb).before($current);
+        var optionsDiv = '<div class="options" style="width: 300px;">';
+        var $search = $('<input type="text" placeholder="Search... (Coming soon!)" class="search" disabled>');
+        for(var i = 0; i < opts.length; i++) {
+            optionsDiv += '<div class="option' + (opts[i].selected ? " selected" : "") + '" data-value="' + opts[i].value + '">' + opts[i].innerHTML.trim() + '</div>';
+        }
+        var $options = $(optionsDiv + '</div>');
+        $options.prepend($search);
+        $(sb).after($options);
+
+        $current.click(function(e) {
+            e.stopPropagation();
+            var $select = $(sb).parent(".select");
+            $select.toggleClass("active");
+            $(".select").not($select).removeClass("active");
+        });
+
+        $search.click(function(e) {
+            e.stopPropagation();
+        });
+
+        $options.find(".option").click(function(e) {
+            e.stopPropagation();
+            var selected = $(sb).val();
+			if(!selected) {selected = [];}
+            var value = $(this).data("value").toString();
+            if($(this).hasClass("selected")) {
+				var i = selected.indexOf(value);
+				if(i !== -1) {
+	                selected.splice(selected.indexOf(value), 1);
+				}
+            }
+            else {
+                selected.push(value);
+            }
+            $(this).toggleClass("selected");
+            $(sb).val(selected);
+			switch(selected.length) {
+				case 0:
+	            	$current.html("Select an item");
+					break;
+				case 1:
+	            	$current.html($options.find('[data-value="' + selected[0] + '"]').html());
+					break;
+				default:
+	            	$current.html(selected.length + " items selected");
+					break;
+			}
+        });
+    });
+
+    $(document).click(function() {
+        $(".select").removeClass("active");
+    });
 }
