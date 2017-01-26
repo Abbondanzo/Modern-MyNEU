@@ -307,7 +307,18 @@ function modernTheme() {
 				selected.splice(selected.indexOf(value), 1);
             }
             else {
-                selected.push(value);
+				if(value === "%") {
+					$options.find(".option.selected").removeClass("selected");
+					selected = ["%"];
+				}
+				else {
+					var all = selected.indexOf("%");
+					if(all !== -1) {
+						$options.find('[data-value="%"].selected').removeClass("selected");
+						selected.splice(all, 1);
+					}
+					selected.push(value);
+				}
             }
             $(this).toggleClass("selected");
             $(sb).val(selected);
