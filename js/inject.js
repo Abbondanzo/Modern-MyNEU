@@ -300,9 +300,17 @@ function modernTheme() {
 
         $options.find(".option").click(function(e) {
             e.stopPropagation();
-            $current.html(this.innerHTML);
-            sb.value = $(this).data("value");
-            $(sb).parent(".select").removeClass("active");
+            var selected = $(sb).val();
+            var value = $(this).data("value");
+            if($(this).hasClass("selected")) {
+                selected.splice(selected.indexOf(value), 1);
+            }
+            else {
+                selected.push(value);
+            }
+            $(this).toggleClass("selected");
+            $(sb).val(selected);
+            $current.html(selected.join(", "));
         });
     });
 

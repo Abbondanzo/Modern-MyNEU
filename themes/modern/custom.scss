@@ -125,6 +125,9 @@ ul {
 			cursor: pointer;
 			border-bottom: 1px solid $border;
 			padding: 0.5em 1em;
+            &.selected {
+                box-shadow: inset 5px 0 0 $primary;
+            }
 			&:hover {
 				color: white;
 				background-color: $primary;
