@@ -281,7 +281,7 @@ function modernTheme() {
         var optionsDiv = '<div class="options" style="width: 300px;">';
         var $search = $('<input type="text" placeholder="Search..." class="search">');
         for(var i = 0; i < opts.length; i++) {
-            optionsDiv += '<div class="option" data-value="' + opts[i].value + '">' + opts[i].innerHTML.trim() + '</div>';
+            optionsDiv += '<div class="option' + (opts[i].selected ? " selected" : "") + '" data-value="' + opts[i].value + '">' + opts[i].innerHTML.trim() + '</div>';
         }
         var $options = $(optionsDiv + '</div>');
         $options.prepend($search);
@@ -301,16 +301,30 @@ function modernTheme() {
         $options.find(".option").click(function(e) {
             e.stopPropagation();
             var selected = $(sb).val();
-            var value = $(this).data("value");
+			if(!selected) {selected = [];}
+            var value = $(this).data("value").toString();
             if($(this).hasClass("selected")) {
-                selected.splice(selected.indexOf(value), 1);
+				var i = selected.indexOf(value);
+				if(i !== -1) {
+	                selected.splice(selected.indexOf(value), 1);
+				}
             }
             else {
                 selected.push(value);
             }
             $(this).toggleClass("selected");
             $(sb).val(selected);
-            $current.html(selected.join(", "));
+			switch(selected.length) {
+				case 0:
+	            	$current.html("Select an item");
+					break;
+				case 1:
+	            	$current.html($options.find('[data-value="' + selected[0] + '"]').html());
+					break;
+				default:
+	            	$current.html(selected.length + " items selected");
+					break;
+			}
         });
     });
 
