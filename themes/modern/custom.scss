@@ -125,13 +125,14 @@ ul {
 			cursor: pointer;
 			border-bottom: 1px solid $border;
 			padding: 0.5em 1em;
-            &.selected {
-                box-shadow: inset 5px 0 0 $primary;
-            }
+			@include transition(0.3s);
 			&:hover {
-				color: white;
-				background-color: $primary;
+				box-shadow: inset 5px 0 0 $primary;
 			}
+            &.selected {
+				color: white;
+				box-shadow: inset 300px 0 0 $primary;
+            }
 		}
 	}
 	&.active {
