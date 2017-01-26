@@ -71,7 +71,7 @@ ul {
 // Fancy select box
 .select {
 	position: relative;
-	width: 100px;
+	width: 300px;
 	font-family: $font;
 	font-size: 90%;
 	select {
@@ -104,7 +104,7 @@ ul {
 		top: 115%;
 		left: 0;
 		overflow: auto;
-		width: 100px;
+		width: 300px;
 		max-height: 300px;
 		background: white;
 		border: 1px solid #ccc;
@@ -141,10 +141,10 @@ ul {
 	}
 }
 
-.dedefault .select {
-	width: 300px;
+.pldefault .select {
+	width: 100px;
 	.options {
-		width: 300px;
+		width: 100px;
 	}
 }
 
