@@ -96,6 +96,18 @@ ul {
 			transition: 0.3s;
 		}
 	}
+    .search {
+        border: none;
+        border-bottom: 1px solid $border;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5em 1em;
+        font-family: $font;
+        font-size: 100%;
+        &:focus {
+            outline: none;
+        }
+    }
 	.options {
 		display: none;
 		z-index: 999999;

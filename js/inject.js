@@ -272,6 +272,40 @@ function modernTheme() {
         });
     });
 
+    $('select[multiple]').each(function() {
+        var sb = this;
+        $(sb).wrap('<div class="select" style="width: 300px;"></div>');
+        var opts = sb.options;
+        var $current = $('<div class="current">' + opts[0].innerHTML.trim() + '</div>');
+        $(sb).before($current);
+        var optionsDiv = '<div class="options" style="width: 300px;">';
+        var $search = $('<input type="text" placeholder="Search..." class="search">');
+        for(var i = 0; i < opts.length; i++) {
+            optionsDiv += '<div class="option" data-value="' + opts[i].value + '">' + opts[i].innerHTML.trim() + '</div>';
+        }
+        var $options = $(optionsDiv + '</div>');
+        $options.prepend($search);
+        $(sb).after($options);
+
+        $current.click(function(e) {
+            e.stopPropagation();
+            var $select = $(sb).parent(".select");
+            $select.toggleClass("active");
+            $(".select").not($select).removeClass("active");
+        });
+
+        $search.click(function(e) {
+            e.stopPropagation();
+        });
+
+        $options.find(".option").click(function(e) {
+            e.stopPropagation();
+            $current.html(this.innerHTML);
+            sb.value = $(this).data("value");
+            $(sb).parent(".select").removeClass("active");
+        });
+    });
+
     $(document).click(function() {
         $(".select").removeClass("active");
     });
