@@ -9,11 +9,15 @@ $active: #242428;
 $sidemenu: #2c2c30;
 $border: #e4e4e4;
 
+// Width of left panel links
 $width: 380px;
+// Size of "active page" border in left panel
 $inset: 8px;
+// Height of top header
 $header: 84px;
+// Width of logout button
 $logout: 130px;
-
+// Global font
 $font: 'Montserrat', sans-serif;
 
 @include keyframes(slideInLeft) {
@@ -504,14 +508,14 @@ div {
             display: inline-block;
         }
         form {
-            min-width: 250px;
+            min-width: 270px;
             input[type="text"] {
                 background: #fafafa;
                 border: 1px solid #fff;
                 border-radius: 99px;
                 padding: 1.2em 4em 1.2em 2.5em;;
                 font-family: $font;
-                width: 50%;
+                width: 40%;
                 &:focus {
                     outline: none;
                     border: 1px solid $border;
@@ -521,8 +525,10 @@ div {
                 background: $primary;
                 border: 0;
                 color: #fff;
-                padding: 1em;
-                cursor: pointer;
+                padding: 0.5em 1em;
+            	cursor: pointer;
+            	margin-left: 6px;
+            	border-radius: 4px;
                 @include transition( background 0.25s );
                 &:hover, &:focus {
 	                outline: none;
