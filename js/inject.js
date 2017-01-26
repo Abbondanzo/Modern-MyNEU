@@ -304,13 +304,21 @@ function modernTheme() {
 			if(!selected) {selected = [];}
             var value = $(this).data("value").toString();
             if($(this).hasClass("selected")) {
-				var i = selected.indexOf(value);
-				if(i !== -1) {
-	                selected.splice(selected.indexOf(value), 1);
-				}
+				selected.splice(selected.indexOf(value), 1);
             }
             else {
-                selected.push(value);
+				if(value === "%") {
+					$options.find(".option.selected").removeClass("selected");
+					selected = ["%"];
+				}
+				else {
+					var all = selected.indexOf("%");
+					if(all !== -1) {
+						$options.find('[data-value="%"].selected').removeClass("selected");
+						selected.splice(all, 1);
+					}
+					selected.push(value);
+				}
             }
             $(this).toggleClass("selected");
             $(sb).val(selected);
