@@ -241,6 +241,9 @@ function modernTheme() {
                 $(this).html('<i title="Help" class="fa fa-life-ring" aria-hidden="true"></i>'+'<span>'+html+'</span>');
             }
         });
+        if(title == "Student Detail Schedule") {
+            detailSchedule();
+        }
     }
 
     /* Fancy select boxes */
@@ -339,4 +342,52 @@ function modernTheme() {
     $(document).click(function() {
         $(".select").removeClass("active");
     });
+
+    /* My Schedule Code */
+    // Runs specifically on Student Detail Schedule
+    function detailSchedule() {
+        console.log('ok');
+    }
+
+    // Sets image background of schedule item based on building name string
+    function returnBuilding(image) {
+        var bg = $('.building-image');
+        if(image.indexOf('Behrakis') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/behrakis.jpg'));
+        } else if(image.indexOf('West Village H') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/wvh.jpg'));
+        } else if(image.indexOf('West Village G') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/wvg.jpg'));
+        } else if(image.indexOf('West Village F') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/wvf.jpg'));
+        } else if(image.indexOf('International Village') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/iv.jpg'));
+        } else if(image.indexOf('Ryder Hall') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/ryder.jpg'));
+        } else if(image.indexOf('Forsyth') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/forsyth.jpg'));
+        } else if(image.indexOf('Richards') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/richards.jpg'));
+        } else if(image.indexOf('Ell') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/ell.jpg'));
+        } else if(image.indexOf('Dodge') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/dodge.jpg'));
+        } else if(image.indexOf('Hayden') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/hayden.jpg'));
+        } else if(image.indexOf('Hurtig') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/hurtig.jpg'));
+        } else if(image.indexOf('Mugar') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/mugar.jpg'));
+        } else if(image.indexOf('Robinson') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/robinson.jpg'));
+        } else if(image.indexOf('Snell Library') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/library.jpg'));
+        } else if(image.indexOf('Lake') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/lake.jpg'));
+        } else if(image.indexOf('Kariotis') != -1) {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/kariotis.jpg'));
+        } else {
+            bg.css('background-image',chrome.extension.getURL('img/buildings/campus.jpg'));
+        }
+    }
 }
