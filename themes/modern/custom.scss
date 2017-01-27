@@ -72,6 +72,11 @@ ul {
     -webkit-padding-start: 0;
 }
 
+abbr {
+    cursor: help;
+    border-bottom: 1px dotted;
+}
+
 // Fancy select box
 .select {
 	position: relative;
@@ -601,6 +606,8 @@ table td.delabel {
 // Transcript table
 .datadisplaytable {
     border-spacing: 0;
+    width: 100%!important;
+    table-layout: fixed;
     .ddtitle {
         background: #3a3838;
         color: #fff;
