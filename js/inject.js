@@ -408,6 +408,7 @@ function modernTheme() {
             html += '<div class="details-center"><span><i class="fa fa-map-marker" aria-hidden="true"></i> '+location+'</span><span><i class="fa fa-user" aria-hidden="true"></i> '+instructor+'</span></div>';
             html += '<div class="details-right"><span><i>CRN:</i> '+crn+'</span><span><a class="more-details">more...</a></span></div>';
             html += '</div></div>'; // end schedule-item
+            $(this).parent().append(html);
         });
     }
 

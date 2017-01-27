@@ -65,7 +65,7 @@ body, .uportal-background-content {
     font-family: $font!important;
 }
 
-ul {
+ul, h1, h3 {
     display: block;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
@@ -595,10 +595,76 @@ div {
         }
     }
     .schedule-item {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        display: block;
+        overflow: hidden;
         .building-image {
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
+            height: 150px;
+            display: table;
+            width: 100%;
+            h1, h3 {
+                color: #fff;
+                font-family: $font;
+                font-weight: 800;
+            }
+            h1 {
+                font-size: 24px;
+                text-transform: uppercase;
+            }
+            h3 {
+                font-size: 16px;
+            }
+            .building-left, .building-right {
+                display: table-cell;
+                vertical-align: bottom;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .building-left {
+                width: 67%;
+            }
+            .building-right {
+                width: 33%;
+                text-align: right;
+                h3 {
+                    font-weight: 300;
+                    font-size: 14px;
+                }
+            }
+        }
+        .schedule-details {
+            color: $textcolor;
+            font-family: $font;
+            display: table;
+            width: 100%;
+            i {
+                color: $primary;
+            }
+            .details-left, .details-center, .details-right {
+                display: table-cell;
+                span {
+                    width: 100%;
+                    display: block;
+                    font-size: 14px;
+	                padding: 10px;
+                }
+            }
+            .details-left {
+                width: 34%;
+                padding: 10px 0 10px 10px;
+            }
+            .details-right {
+                width: 20%;
+            }
+            .more-details {
+                color: $primary;
+                cursor: pointer;
+            }
         }
     }
 }
