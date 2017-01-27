@@ -594,6 +594,13 @@ div {
             }
         }
     }
+    .schedule-item {
+        .building-image {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    }
 }
 .pagefooterdiv, .banner_copyright {
     width: 100%;

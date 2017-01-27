@@ -346,48 +346,109 @@ function modernTheme() {
     /* My Schedule Code */
     // Runs specifically on Student Detail Schedule
     function detailSchedule() {
-        console.log('ok');
+        var summary = "This layout table is used to present the schedule course detail";
+        $('.datadisplaytable[summary="'+summary+'"]').each(function() {
+            // Get values in term table
+            var crn = $(this).find('tbody').children().eq(1).children('td').html();
+            var credits = $(this).find('tbody').children().eq(5).children('td').html();
+
+            // Get schedule of class
+            var nextTable = $(this).next()[0];
+            var time = $(nextTable).find('tbody').children().eq(1).children().eq(1).html();
+            var days = $(nextTable).find('tbody').children().eq(1).children().eq(2).html();
+            var location = $(nextTable).find('tbody').children().eq(1).children().eq(3).html();
+            var daterange = $(nextTable).find('tbody').children().eq(1).children().eq(4).html();
+            var instructor = $(nextTable).find('tbody').children().eq(1).children().eq(6).html();
+
+            var html = '<div class="schedule-item">';
+            html += '<div class="building-image" style="background-image: url('+chrome.extension.getURL(returnBuilding(location))+')">';
+            // Name of scheduled class
+            var className = $(this).find('caption').html();
+            var classNumber = className.match(/- ([A-Z]{2,4} \d{4}) -/)[1];
+            var classTitle = className.match(/^.*?(?= -)/g);
+            html += '<div class="building-left"><h3>'+classNumber+'</h3><h1>'+classTitle+'</h1></div>';
+
+
+            // Transcribe days to abbreviations
+            var i = 0;
+            var longdays = "";
+            while (i <= days.length) {
+                switch(days.slice(i, i+1)) {
+                    case "M":
+                        longdays += "Mon, ";
+                        break;
+                    case "T":
+                        longdays += "Tue, ";
+                        break;
+                    case "W":
+                        longdays += "Wed, ";
+                        break;
+                    case "R":
+                        longdays += "Thur, ";
+                        break;
+                    case "F":
+                        longdays += "Fri, ";
+                        break;
+                    case "S":
+                        longdays += "Sat, ";
+                        break;
+                    default:
+                        longdays += "";
+                        break;
+                }
+                i++;
+            }
+            if (longdays.length > 0) {
+                longdays = longdays.slice(0, longdays.length-2);
+            }
+            html += '<div class="building-right"><h3>'+longdays+'</h3><h3><i class="fa fa-clock-o" aria-hidden="true"></i> '+time+'</h3></div>';
+            html += '</div>'; // end .building-image
+            html += '<div class="schedule-details">';
+            html += '<div class="details-left"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> '+credits+' Credits</span><span><i class="fa fa-calendar" aria-hidden="true"></i> '+daterange+'</span></div>';
+            html += '<div class="details-center"><span><i class="fa fa-map-marker" aria-hidden="true"></i> '+location+'</span><span><i class="fa fa-user" aria-hidden="true"></i> '+instructor+'</span></div>';
+            html += '<div class="details-right"><span><i>CRN:</i> '+crn+'</span><span><a class="more-details">more...</a></span></div>';
+            html += '</div></div>'; // end schedule-item
+        });
     }
 
     // Sets image background of schedule item based on building name string
     function returnBuilding(image) {
-        var bg = $('.building-image');
         if(image.indexOf('Behrakis') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/behrakis.jpg'));
+            return 'img/buildings/behrakis.jpg';
         } else if(image.indexOf('West Village H') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/wvh.jpg'));
+            return 'img/buildings/wvh.jpg';
         } else if(image.indexOf('West Village G') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/wvg.jpg'));
+            return 'img/buildings/wvg.jpg';
         } else if(image.indexOf('West Village F') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/wvf.jpg'));
+            return 'img/buildings/wvf.jpg';
         } else if(image.indexOf('International Village') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/iv.jpg'));
-        } else if(image.indexOf('Ryder Hall') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/ryder.jpg'));
+            return 'img/buildings/iv.jpg';
+        } else if(image.indexOf('Ryder') != -1) {
+            return 'img/buildings/ryder.jpg';
         } else if(image.indexOf('Forsyth') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/forsyth.jpg'));
+            return 'img/buildings/forsyth.jpg';
         } else if(image.indexOf('Richards') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/richards.jpg'));
+            return 'img/buildings/richards.jpg';
         } else if(image.indexOf('Ell') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/ell.jpg'));
+            return 'img/buildings/ell.jpg';
         } else if(image.indexOf('Dodge') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/dodge.jpg'));
+            return 'img/buildings/dodge.jpg';
         } else if(image.indexOf('Hayden') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/hayden.jpg'));
+            return 'img/buildings/hayden.jpg';
         } else if(image.indexOf('Hurtig') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/hurtig.jpg'));
+            return 'img/buildings/hurtig.jpg';
         } else if(image.indexOf('Mugar') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/mugar.jpg'));
+            return 'img/buildings/mugar.jpg';
         } else if(image.indexOf('Robinson') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/robinson.jpg'));
+            return 'img/buildings/robinson.jpg';
         } else if(image.indexOf('Snell Library') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/library.jpg'));
+            return 'img/buildings/library.jpg';
         } else if(image.indexOf('Lake') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/lake.jpg'));
+            return 'img/buildings/lake.jpg';
         } else if(image.indexOf('Kariotis') != -1) {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/kariotis.jpg'));
+            return 'img/buildings/kariotis.jpg';
         } else {
-            bg.css('background-image',chrome.extension.getURL('img/buildings/campus.jpg'));
+            return 'img/buildings/campus.jpg';
         }
     }
 }
