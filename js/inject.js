@@ -66,9 +66,6 @@ function modernTheme() {
         $('#wrap').append('<div class="footer-links">'+$('.footerlinks').html()+'</div>');
     }
 
-    /* Prevent 1 hour timeout, needs timeout implementation/experimentation */
-    alertQueryCallback = function(){};
-
     /* Modify Tab data from a table to a list */
     $('#tabs_tda').each(function() {
         //.replace(/<tr/g,'<ul').replace(/<\/tr>/g,'</ul>').replace(/<td/g,'<li').replace(/<\/td>/g,'</li>')
@@ -398,14 +395,29 @@ function modernTheme() {
                 }
                 i++;
             }
+            // Remove final comma
             if (longdays.length > 0) {
                 longdays = longdays.slice(0, longdays.length-2);
             }
+
+            // Final/no final settings
+            var finals = $(nextTable).find('tbody').children().eq(2);
+            var finalsinfo;
+            if (finals.length) {
+                var finaltime = finals.children().eq(1).html();
+                var finalday = finals.children().eq(4).html();
+                var finaldate = finals.children().eq(4).html();
+                var finallocation = finals.children().eq(3).html();
+                finalsinfo = '<span class="finals">Final on '+finaldate.match(/^.*?(?= -)/g)+' at<br>'+finaltime+'</span>';
+            } else {
+                finalsinfo = 'No Final';
+            }
+
             html += '<div class="building-right"><h3>'+longdays+'</h3><h3><i class="fa fa-clock-o" aria-hidden="true"></i> '+time+'</h3></div>';
             html += '</div>'; // end .building-image
             html += '<div class="schedule-details">';
-            html += '<div class="details-left"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> '+credits+' Credits</span><span><i class="fa fa-calendar" aria-hidden="true"></i> '+daterange+'</span></div>';
-            html += '<div class="details-center"><span><i class="fa fa-map-marker" aria-hidden="true"></i> '+location+'</span><span><i class="fa fa-user" aria-hidden="true"></i> '+instructor+'</span></div>';
+            html += '<div class="details-left"><span><i class="fa fa-map-marker" aria-hidden="true"></i> '+location+'</span><span><i class="fa fa-user" aria-hidden="true"></i> '+instructor+'</span></div>';
+            html += '<div class="details-center"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> '+credits+' Credits</span><span><i class="fa fa-calendar" aria-hidden="true"></i> '+finalsinfo+'</span></div>';
             html += '<div class="details-right"><span><i>CRN:</i> '+crn+'</span><span><a class="more-details">more...</a></span></div>';
             html += '</div></div>'; // end schedule-item
             $(this).parent().append(html);

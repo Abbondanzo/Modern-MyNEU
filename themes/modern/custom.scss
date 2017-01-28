@@ -644,6 +644,8 @@ div {
             width: 100%;
             i {
                 color: $primary;
+                width: 18px;
+                vertical-align: top;
             }
             .details-left, .details-center, .details-right {
                 display: table-cell;
@@ -653,9 +655,14 @@ div {
                     font-size: 14px;
 	                padding: 10px;
                 }
+                .finals {
+                    width: 90%;
+                    display: inline-block;
+                    padding: 0;
+                }
             }
             .details-left {
-                width: 34%;
+                width: 45%;
                 padding: 10px 0 10px 10px;
             }
             .details-right {
