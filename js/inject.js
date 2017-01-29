@@ -437,11 +437,26 @@ function modernTheme() {
                 finalLocation = 'No Final';
             }
 
+            // Split instructor
+            instructor = instructor.split(", ");
+            var prof;
+            if (instructor.length > 1) {
+                var j = 1;
+                var hiddenprof = "";
+                while (j < instructor.length) {
+                    hiddenprof += '<span>'+instructor[j]+'</span>';
+                    j++;
+                }
+                prof = instructor[0]+', <div class="hiddenprof">+'+(instructor.length-1)+'<div class="otherprof">'+hiddenprof+'</div></div>';
+            } else {
+                prof = instructor;
+            }
+
             html += '<div class="building-right"><h3>'+longdays+'</h3><h3><i class="fa fa-clock-o" aria-hidden="true"></i> '+time+'</h3></div>';
             html += '</div>'; // end .building-image
             // Details that exist under building image
             html += '<div class="schedule-details">';
-            html += '<div class="details-left"><span><i class="fa fa-map-marker" aria-hidden="true"></i> '+location+'</span><span><i class="fa fa-user" aria-hidden="true"></i> '+instructor+'</span></div>';
+            html += '<div class="details-left"><span><i class="fa fa-map-marker" aria-hidden="true"></i> '+location+'</span><span><i class="fa fa-user" aria-hidden="true"></i> '+prof+'</span></div>';
             html += '<div class="details-center"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> '+credits+' Credits</span><span><i class="fa fa-calendar" aria-hidden="true"></i> '+finalsinfo+'</span></div>';
             html += '<div class="details-right"><span><i>CRN:</i> '+crn+'</span><span><a class="more-details">more...</a></span></div>';
             html += '</div>'; // end schedule-details

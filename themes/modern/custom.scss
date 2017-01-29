@@ -673,6 +673,39 @@ div {
                 color: $primary;
                 cursor: pointer;
             }
+            .hiddenprof {
+                cursor: pointer;
+                text-decoration: underline;
+                position: relative;
+                display: inline-block;
+                .otherprof {
+                    display: none;
+                    background: #666;
+                    color: #fff;
+                    position: absolute;
+                    top: -10px;
+                    left: 30px;
+                    &::after {
+                        right: 100%;
+                    	top: 20px;
+                    	border: solid transparent;
+                    	content: " ";
+                    	height: 0;
+                    	width: 0;
+                    	position: absolute;
+                    	pointer-events: none;
+                    	border-right-color: #666;
+                    	border-width: 10px;
+                    	margin-top: -10px;
+                    }
+                }
+                &:hover {
+                    .otherprof {
+                        display: block;
+                        min-width: 200px;
+                    }
+                }
+            }
         }
         .schedule-extras {
             font-family: $font;
