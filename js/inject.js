@@ -240,6 +240,16 @@ function modernTheme() {
         });
         if(title == "Student Detail Schedule") {
             detailSchedule();
+            $('.more-details').on('click', function() {
+                var topParent = $(this).closest('.schedule-item');
+                if (topParent.hasClass('active-schedule')) {
+                    topParent.removeClass('active-schedule');
+                    $(this).html('more...');
+                } else {
+                    topParent.addClass('active-schedule');
+                    $(this).html('less...');
+                }
+            });
         }
     }
 
@@ -345,17 +355,30 @@ function modernTheme() {
     function detailSchedule() {
         var summary = "This layout table is used to present the schedule course detail";
         $('.datadisplaytable[summary="'+summary+'"]').each(function() {
+            // Hide this table
+            $(this).css('display','none');
+
             // Get values in term table
+            var term = $(this).find('tbody').children().eq(0).children('td').html();
             var crn = $(this).find('tbody').children().eq(1).children('td').html();
+            var status = $(this).find('tbody').children().eq(2).children('td').html();
+            var gradeMode = $(this).find('tbody').children().eq(4).children('td').html();
             var credits = $(this).find('tbody').children().eq(5).children('td').html();
+            var level = $(this).find('tbody').children().eq(6).children('td').html();
+            var campus = $(this).find('tbody').children().eq(7).children('td').html();
 
             // Get schedule of class
             var nextTable = $(this).next()[0];
+
+            // Hide this table
+            $(nextTable).css('display','none');
+
             var time = $(nextTable).find('tbody').children().eq(1).children().eq(1).html();
             var days = $(nextTable).find('tbody').children().eq(1).children().eq(2).html();
             var location = $(nextTable).find('tbody').children().eq(1).children().eq(3).html();
             var daterange = $(nextTable).find('tbody').children().eq(1).children().eq(4).html();
             var instructor = $(nextTable).find('tbody').children().eq(1).children().eq(6).html();
+            var seats = $(nextTable).find('tbody').children().eq(1).children().eq(7).html();
 
             var html = '<div class="schedule-item">';
             html += '<div class="building-image" style="background-image: url('+chrome.extension.getURL(returnBuilding(location))+')">';
@@ -402,25 +425,39 @@ function modernTheme() {
 
             // Final/no final settings
             var finals = $(nextTable).find('tbody').children().eq(2);
+            var finalLocation;
             var finalsinfo;
             if (finals.length) {
                 var finaltime = finals.children().eq(1).html();
-                var finalday = finals.children().eq(4).html();
                 var finaldate = finals.children().eq(4).html();
-                var finallocation = finals.children().eq(3).html();
+                finalLocation = finals.children().eq(3).html();
                 finalsinfo = '<span class="finals">Final on '+finaldate.match(/^.*?(?= -)/g)+' at<br>'+finaltime+'</span>';
             } else {
                 finalsinfo = 'No Final';
+                finalLocation = 'No Final';
             }
 
             html += '<div class="building-right"><h3>'+longdays+'</h3><h3><i class="fa fa-clock-o" aria-hidden="true"></i> '+time+'</h3></div>';
             html += '</div>'; // end .building-image
+            // Details that exist under building image
             html += '<div class="schedule-details">';
             html += '<div class="details-left"><span><i class="fa fa-map-marker" aria-hidden="true"></i> '+location+'</span><span><i class="fa fa-user" aria-hidden="true"></i> '+instructor+'</span></div>';
             html += '<div class="details-center"><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> '+credits+' Credits</span><span><i class="fa fa-calendar" aria-hidden="true"></i> '+finalsinfo+'</span></div>';
             html += '<div class="details-right"><span><i>CRN:</i> '+crn+'</span><span><a class="more-details">more...</a></span></div>';
-            html += '</div></div>'; // end schedule-item
-            $(this).parent().append(html);
+            html += '</div>'; // end schedule-details
+            // Hidden details viewed when clicking "more..."
+            html += '<div class="schedule-extras"><div class="extras-left">';
+            html += '<p>Range <span>'+daterange+'</span></p>';
+            html += '<p>Term <span>'+term+'</span></p>';
+            html += '<p>Campus <span>'+campus+'</span></p>';
+            html += '<p>Status <span>'+status+'</span></p>';
+            html += '</div><div class="extras-right">'; // End left, start right
+            html += '<p>Final Location <span>'+finalLocation+'</span></p>';
+            html += '<p>Grade Mode <span>'+gradeMode+'</span></p>';
+            html += '<p>Level <span>'+level+'</span></p>';
+            html += '<p>Remaining Seats <span>'+seats+'</span></p>';
+            html += '</div></div></div>'; // End extras-right, schedule-extras, schedule-item
+            $(this).after(html);
         });
     }
 

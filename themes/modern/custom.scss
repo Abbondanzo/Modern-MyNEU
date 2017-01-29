@@ -642,6 +642,7 @@ div {
             font-family: $font;
             display: table;
             width: 100%;
+            z-index: 1;
             i {
                 color: $primary;
                 width: 18px;
@@ -672,6 +673,41 @@ div {
                 color: $primary;
                 cursor: pointer;
             }
+        }
+        .schedule-extras {
+            font-family: $font;
+            font-size: 14px;
+            width: 100%;
+            transform: translateY(-50%);
+            transform-origin: 0 0;
+            opacity: 0;
+            height: 0;
+            z-index: -1;
+            @include transition( all 0.25s );
+            .extras-left, .extras-right {
+                display: table-cell;;
+                width: 50%;
+                p {
+                    color: $primary;
+                    span {
+                        color: $textcolor;
+                        float: right;
+                    }
+                }
+            }
+            .extras-left {
+                padding: 0 10px 0 20px;
+            }
+            .extras-right {
+                padding: 0 20px 0 10px;;
+            }
+        }
+    }
+    .active-schedule {
+        .schedule-extras {
+            opacity: 1;
+            transform: translateY(0%);
+            display: table;
         }
     }
 }
