@@ -684,8 +684,7 @@ div {
                     color: #fff;
                     position: absolute;
                     top: -10px;
-                    left: 30px;
-                    &::after {
+                    /*&::after {
                         right: 100%;
                     	top: 20px;
                     	border: solid transparent;
@@ -697,9 +696,9 @@ div {
                     	border-right-color: #666;
                     	border-width: 10px;
                     	margin-top: -10px;
-                    }
+                    }*/
                 }
-                &:hover {
+                &:hover, &:focus {
                     .otherprof {
                         display: block;
                         min-width: 200px;

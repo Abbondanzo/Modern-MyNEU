@@ -444,12 +444,12 @@ function modernTheme() {
                 var j = 1;
                 var hiddenprof = "";
                 while (j < instructor.length) {
-                    hiddenprof += '<span>'+instructor[j]+'</span>';
+                    hiddenprof += '<span>'+mailToLink(instructor[j])+'</span>';
                     j++;
                 }
-                prof = instructor[0]+', <div class="hiddenprof">+'+(instructor.length-1)+'<div class="otherprof">'+hiddenprof+'</div></div>';
+                prof = mailToLink(instructor[0])+', <div class="hiddenprof">+'+(instructor.length-1)+'<div class="otherprof">'+hiddenprof+'</div></div>';
             } else {
-                prof = instructor;
+                prof = mailToLink(instructor[0]);
             }
 
             html += '<div class="building-right"><h3>'+longdays+'</h3><h3><i class="fa fa-clock-o" aria-hidden="true"></i> '+time+'</h3></div>';
@@ -514,6 +514,16 @@ function modernTheme() {
             return 'img/buildings/kariotis.jpg';
         } else {
             return 'img/buildings/campus.jpg';
+        }
+    }
+
+    // Returns the given professor with a mailto link if they have one assigned
+    function mailToLink(instructor) {
+        var match = instructor.match(/<a href(.|\s)*?>/);
+        if(match) {
+            return match[0]+instructor.match(/(.*?)<a href/)[1]+'</a>';
+        } else {
+            return instructor;
         }
     }
 }
