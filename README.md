@@ -33,4 +33,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Contributors
 
 Special thanks to the following people for contributing to Modern MyNEU:
-*[Taha Vasowalla](https://github.com/DarkAce65)
+* [Taha Vasowalla](https://github.com/DarkAce65)
