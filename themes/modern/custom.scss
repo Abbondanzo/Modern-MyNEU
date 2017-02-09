@@ -440,6 +440,7 @@ div {
     left: 0;
     top: 0;
     width: 100%;
+    max-height: 65px;
     background: #fff;
     border-bottom: 1px solid #e4e4e4;
     .headerlinksdiv {
@@ -461,6 +462,7 @@ div {
                 padding-left: 0;
                 background: transparent;
                 height: 60px;
+                font-weight: 300;
                 a {
                     padding: 2em;
                     color: $textcolor;
