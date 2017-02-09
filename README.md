@@ -29,3 +29,8 @@ If you ever come across any errors or issues with the extension, open an issue r
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Contributors
+
+Special thanks to the following people for contributing to Modern MyNEU:
+* [Taha Vasowalla](https://github.com/DarkAce65)
