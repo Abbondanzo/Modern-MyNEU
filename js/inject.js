@@ -5,7 +5,8 @@ style.type = 'text/css';
 style.id = 'customcss';
 style.href = chrome.extension.getURL('themes/modern/custom.css');
 chrome.storage.sync.get({
-    enabled: "true"
+    enabled: "true",
+    customColor: "ea1f23"
 }, function(items) {
     if (items.enabled == "false") {
         $("link[href*='custom.css']").remove();
@@ -14,13 +15,24 @@ chrome.storage.sync.get({
     } else {
         (document.head||document.documentElement).appendChild(style);
         checkScript();
+        // updateAllColors(items.customColor); for future update
     }
 });
 
 function checkScript() {
     modernTheme();
 }
-
+/*function updateAllColors(color) {
+    var hColor = '#' + color;
+    $('.uportal-head14-bold').each(function() {
+        $(this).css('color',hColor)
+    })
+    $('.heading a .secondary .fa').each(function() {
+        $(this).css('color',hColor)
+    })
+    $('.mylogo').css('background-color',hColor)
+    $('div.tabon a').css('box-shadow','inset 8px 0 0 0 ' + hColor)
+}*/
 function modernTheme() {
     // This is currently causing conflict with iframe loading
     /*$("iframe").each(function() {
