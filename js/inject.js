@@ -115,6 +115,7 @@ function modernTheme() {
                 break;
         }
     });
+    /* Adds icons to sidebar menu */
     $('.nav div ul li').each(function() {
         var html = $(this).children().children().html();
         if (html.indexOf('myNEU Central') != -1) {
@@ -129,6 +130,8 @@ function modernTheme() {
             $(this).children().children().html('<i class="fa fa-briefcase" aria-hidden="true"></i> '+html);
         } else if (html.indexOf('InfoChannels') != -1) {
             $(this).children().children().html('<i class="fa fa-info-circle" aria-hidden="true"></i> '+html);
+        } else { // Fallback icon styling
+            $(this).children().children().html('<i class="fa fa-file-text" aria-hidden="true"></i> '+html);
         }
     });
     /* Replaces expand, minimize, and maximize icons */
@@ -252,7 +255,17 @@ function modernTheme() {
             });
         }
     }
-
+    /* Fix for Transcript table */
+    $('.ddlabel').each(function() {
+        var html = $(this).html();
+        if (html.indexOf('TransferFrom') != -1) {
+            $(this).attr('colspan','3');
+            $(this).next().css('border',0);
+            $(this).next().attr('colspan','9');
+        } else if (html.indexOf('Academic Standing') != -1) {
+            $(this).next().css('border',0);
+        }
+    })
     /* Fancy select boxes */
     $('select:not([multiple])').each(function() {
         var sb = this;
