@@ -77,6 +77,34 @@ abbr {
     border-bottom: 1px dotted;
 }
 
+.spinner {
+    display: inline-block;
+    margin: auto;
+    width: 40px;
+    height: 10px;
+    text-align: center;
+    font-size: 10px;
+
+    & > div {
+        background-color: #fff;
+        height: 100%;
+        width: 2px;
+        display: inline-block;
+        @include animation(sk-stretchdelay 1.2s infinite ease-in-out);
+    }
+
+    @for $i from 2 through 5 {
+        .rect#{$i} {
+            @include animation-delay(-1.3s + $i * 0.1);
+        }
+    }
+}
+
+@include keyframes(sk-stretchdelay) {
+    0%, 40%, 100% {@include transform(scaleY(0.4));}
+    20% {@include transform(scaleY(1));}
+}
+
 // Fancy select box
 .select {
 	position: relative;
