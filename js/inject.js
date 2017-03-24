@@ -74,6 +74,9 @@ function modernTheme() {
         $('.new-login').on('click',function(e) {
             e.preventDefault();
         });
+        $('.new-login form button').on('click',function(e) {
+            $(this).html('<div class="spinner"><div class="rect1"></div>&nbsp;<div class="rect2"></div>&nbsp;<div class="rect3"></div>&nbsp;<div class="rect4"></div>&nbsp;<div class="rect5"></div></div>');
+        });
 
         $('#wrap').append('<div class="footer-links">'+$('.footerlinks').html()+'</div>');
     }
