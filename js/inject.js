@@ -241,7 +241,8 @@ function modernTheme() {
         }
     });
     // Run on wl11gp
-    if(window.location.pathname.indexOf('udcprod8') != -1) {
+    var windowLoc = window.location.pathname;
+    if(windowLoc.indexOf('udcprod8') != -1) {
         // Adds title to content
         var title = $('.pagetitlediv').find('h2').html();
         $('.pagebodydiv').prepend('<h2>'+title+'</h2>');
@@ -268,6 +269,11 @@ function modernTheme() {
                     $(this).html('less...');
                 }
             });
+        }
+        // Runs on Dynamic schedule
+        if (windowLoc.indexOf('NEUCLSS') != -1) {
+            $('body').css('background-image','none');
+            $('.pageheaderdiv1').css('margin-top',0);
         }
     }
     /* Fix for Transcript table */
