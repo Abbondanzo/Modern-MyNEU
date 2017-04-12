@@ -1,7 +1,7 @@
 // Saves options to chrome.storage
 function save_options() {
     var enab = document.getElementById('enable');
-    if (enab.value == "false") {
+    if (enab.value === "false") {
         enab.value = "true";
         enab.textContent = "Disable";
     } else {
@@ -30,7 +30,7 @@ function restore_options() {
     }, function(items) {
         var enab = document.getElementById('enable');
         enab.value = items.enabled;
-        enab.value == "false" ? enab.textContent = 'Enable' : enab.textContent = 'Disable';
+        enab.value === "false" ? enab.textContent = 'Enable' : enab.textContent = 'Disable';
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
