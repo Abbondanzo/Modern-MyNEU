@@ -293,7 +293,7 @@ function modernTheme() {
             $(this).next().css('border',0);
         }
     })
-    /* Fancy select boxes */
+    /* Fancy select boxes for single-selection boxes */
     $('select:not([multiple])').each(function() {
         var sb = this;
         $(sb).wrap('<div class="select"></div>');
@@ -307,12 +307,7 @@ function modernTheme() {
         var $options = $(optionsDiv + '</div>');
         $(sb).after($options);
 
-        $current.click(function(e) {
-            e.stopPropagation();
-            var $select = $(sb).parent(".select");
-            $select.toggleClass("active");
-            $(".select").not($select).removeClass("active");
-        });
+        currentClick(sb, $current);
 
         $options.find(".option").click(function(e) {
             e.stopPropagation();
@@ -321,7 +316,16 @@ function modernTheme() {
             $(sb).parent(".select").removeClass("active");
         });
     });
-
+    /* Selection listener */
+    function currentClick(sb, current) {
+        current.click(function(e) {
+            e.stopPropagation();
+            var $select = $(sb).parent(".select");
+            $select.toggleClass("active");
+            $(".select").not($select).removeClass("active");
+        });
+    }
+    /* Selection events for multiple-select boxes */
     $('select[multiple]').each(function() {
         var sb = this;
         $(sb).wrap('<div class="select" style="width: 300px;"></div>');
@@ -337,12 +341,7 @@ function modernTheme() {
         $options.prepend($search);
         $(sb).after($options);
 
-        $current.click(function(e) {
-            e.stopPropagation();
-            var $select = $(sb).parent(".select");
-            $select.toggleClass("active");
-            $(".select").not($select).removeClass("active");
-        });
+        currentClick(sb, $current);
 
         $search.click(function(e) {
             e.stopPropagation();
