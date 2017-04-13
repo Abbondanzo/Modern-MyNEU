@@ -1,4 +1,6 @@
 # Modern-MyNEU
+[![Code Climate](https://codeclimate.com/github/Abbondanzo/Modern-MyNEU/badges/gpa.svg)](https://codeclimate.com/github/Abbondanzo/Modern-MyNEU)
+
 Open-source browser plugin that takes apart Northeastern's MyNEU portal for a much cleaner, modern look.
 
 ## Installation
