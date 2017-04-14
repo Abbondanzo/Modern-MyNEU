@@ -3,7 +3,7 @@
 
     "name": "Modern MyNEU",
     "description": "This extension drastically improves the look of Northeastern's myNEU portal. The portal was made in 2009 and this was made in 2016.",
-    "version": "0.9.6",
+    "version": "0.9.6.1",
     "icons": {
         "16": "img/icon16.png",
         "48": "img/icon48.png",

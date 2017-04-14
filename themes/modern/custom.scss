@@ -812,6 +812,19 @@ table td.delabel {
             color: $primary;
         }
     }
+    &.resize-table {
+        font-size: 75%;
+        word-wrap: break-word;
+        .ddheader {
+            font-size: 70%;
+        }
+        .select {
+            width: 100%;
+            .options {
+                width: 100%;
+            }
+        }
+    }
 }
 @media screen and (max-width: 660px) {
     .pldefault {

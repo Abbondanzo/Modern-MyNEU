@@ -281,6 +281,12 @@ function modernTheme() {
             $('body').css('background-image','none');
             $('.pageheaderdiv1').css('margin-top',0);
         }
+        // Runs on Add/Drop classes page
+        if (windowLoc.indexOf('P_Regs') !== -1) {
+            $('.datadisplaytable').each(function() {
+                $(this).addClass('resize-table');
+            })
+        }
     }
     /* Fix for Transcript table */
     $('.ddlabel').each(function() {
