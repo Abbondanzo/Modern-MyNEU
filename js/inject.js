@@ -282,7 +282,7 @@ function modernTheme() {
             $('.pageheaderdiv1').css('margin-top',0);
         }
         // Runs on Add/Drop classes page
-        if (windowLoc.indexOf('P_Regs') !== -1) {
+        if (windowLoc.indexOf('P_Regs') !== -1 || windowLoc.indexOf('bwskfreg.P_AltPin') !== -1) {
             $('.datadisplaytable').each(function() {
                 $(this).addClass('resize-table');
             })
