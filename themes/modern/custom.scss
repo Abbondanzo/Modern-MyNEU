@@ -391,7 +391,13 @@ html {
         }
     }
 }
-
+// Fix for iframes
+#widgetmain {
+    width: 100%!important;
+    #rssOutput {
+        width: 100%!important;
+    }
+}
 #tabs_tda {
     background: $sidemenu;
     height: 100%;
@@ -459,7 +465,15 @@ div {
         }
     }
 }
-
+// Infochallens
+.news-items {
+    .uportal-channel-text {
+        width: 46%;
+        padding: 2%;
+        vertical-align: top;
+        display: inline-block;
+    }
+}
 // Student Info
 .campuspipeline {
     margin: 0!important;
