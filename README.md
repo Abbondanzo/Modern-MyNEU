@@ -29,11 +29,15 @@ If you're like me and you like to tinker with code, there are a few things you n
 If you ever come across any errors or issues with the extension, open an issue report. To request changes to the code base, open a pull request.
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Contributors
-
 Special thanks to the following people for contributing to Modern MyNEU:
 * [Taha Vasowalla](https://github.com/DarkAce65)
 * [Alex Aubuchon](https://github.com/A-lxe)
+
+## Featured Articles
+This extension has received some attention from a variety of publications, such as:
+* [Huntington News, Students Revamp myNEU Interface](https://huntnewsnu.com/2017/02/students-revamp-myneu-interface/)
+* [WIRED, Meet the NU-Nerds](https://www.wired.com/2017/04/the-genial-brilliant-candy-loving-hackers-of-stetson-west/)
+* [Reddit, A Chrome extension that makes MyNEU not look like sh*t](https://www.reddit.com/r/NEU/comments/5q86si/a_chrome_extension_that_makes_myneu_not_look_like/)
