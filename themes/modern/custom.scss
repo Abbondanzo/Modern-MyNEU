@@ -486,6 +486,9 @@ div {
     max-height: 65px;
     background: #fff;
     border-bottom: 1px solid #e4e4e4;
+    .pageheaderdiv1 {
+        display: none;
+    }
     .headerlinksdiv {
         display: inline-block;
         width: 50%;
