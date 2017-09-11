@@ -1,0 +1,155 @@
+* {
+    outline: none;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    font-size: 12px;
+    width: 350px;
+    margin: 0;
+    color: #444;
+    background: #fafafa;
+}
+
+.title-head {
+    background: #ea1f23;
+    padding: 10px;
+    color: #fff;
+}
+
+h1,
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 12px;
+    text-align: left;
+}
+
+table {
+    width: 100%;
+    padding-top: 1em;
+    border-collapse: collapse;
+}
+
+tbody {
+    padding: 10px 0;
+    display: block;
+}
+
+tr {
+    background: #fff;
+    margin: 10px 15px 0 15px;
+    padding: 10px 20px;
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(224, 224, 224);
+    box-shadow: 0px 2px 3.52px 0.48px rgba(0, 0, 0, 0.05);
+}
+
+td {
+    width: 50%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+button {
+    float: right;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    width: 100px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 30px;
+    padding: 0;
+    line-height: 20px;
+    border: 1px solid #b5b5b5;
+    border-radius: 30px;
+    background-color: #EEEEEE;
+    transition: background-color 0.3s ease-in;
+    &::before,
+    &::after {
+        display: block;
+        position: absolute;
+        content: "";
+    }
+    &::before {
+        content: "";
+        display: block;
+        width: 23px;
+        margin: 0px;
+        background: #FFFFFF;
+        position: absolute;
+        top: 2px;
+        bottom: 2px;
+        right: 69px;
+        border: 1px solid #999999;
+        border-radius: 40px;
+        transition: all 0.3s ease-in 0s;
+    }
+}
+
+#enable[value=true] {
+    &::before {
+        border-color: #ea1f23;
+        right: 2px;
+    }
+    background-color: #ea1f23;
+    color: #fff;
+}
+
+select {
+    min-width: 120px;
+    max-width: 200px;
+    height: 36px;
+    border-radius: 4px;
+    font-family: "Montserrat", sans-serif;
+    margin-left: 30px;
+    padding-left: 10px;
+}
+
+.help {
+    font-size: 9px;
+    opacity: 0.4;
+    padding: 10px 0 20px 0;
+}
+
+.options {
+    width: 350px;
+    background: #fff;
+    padding: 20px 0;
+    border-top-width: 1px;
+    border-top: 1px solid rgb(224, 224, 224);
+    text-decoration: none;
+    img {
+        height: 12px;
+        width: 12px;
+        margin-bottom: -1px;
+        padding-right: 0.25em;
+        x: 0.5em;
+    }
+}
+
+.jscolor {
+    width: 100px;
+    float: right;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border: 1px solid;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 4px;
+    border-color: rgb(169, 169, 169);
+    cursor: not-allowed;
+}
