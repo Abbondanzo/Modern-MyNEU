@@ -3,7 +3,7 @@
 
     "name": "Modern MyNEU",
     "description": "This extension drastically improves the look of Northeastern's myNEU portal. The portal was made in 2009 and this was made in 2016.",
-    "version": "0.9.6.1",
+    "version": "0.9.7",
     "icons": {
         "16": "img/icon16.png",
         "48": "img/icon48.png",
@@ -24,13 +24,11 @@
     "background": {
         "scripts": ["js/background.js"]
     },
-    "content_scripts": [
-        {
-            "matches": ["http://myneu.neu.edu/*","https://myneu.neu.edu/*","https://wl11gp.neu.edu/*"],
-            "js": ["js/jquery-2.1.4.min.js","js/inject.min.js"],
-            "css": ["css/font-awesome.css","css/loader.css"]
-        }
-    ],
+    "content_scripts": [{
+        "matches": ["http://myneu.neu.edu/*", "https://myneu.neu.edu/*", "https://wl11gp.neu.edu/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/inject.min.js"],
+        "css": ["css/font-awesome.css", "css/loader.css"]
+    }],
     "web_accessible_resources": [
         "css/default.css",
         "themes/modern/custom.css",

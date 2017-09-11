@@ -19,17 +19,78 @@ chrome.storage.sync.get({
         (document.head || document.documentElement).appendChild(style);
     } else {
         defaultPage = items.defaultPage;
-        (document.head || document.documentElement).appendChild(style);
         checkScript();
+        (document.head || document.documentElement).appendChild(style);
         // updateAllColors(items.customColor); for future update
     }
 });
 
 function checkScript() {
-    setPage(modernTheme);
+    checkPage(modernTheme);
 }
 
-function setPage(callback) {
+/**
+ * @param {String} name 
+ * @param {String|Boolean} value 
+ * @param {Number} hours 
+ */
+function createCookie(name, value, hours) {
+    var expires = '';
+    if (hours) {
+        var date = new Date();
+        date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+        expires = '; expires=' + date.toUTCString();
+    }
+    document.cookie = name + '=' + value + expires + '; path=/';
+}
+
+/**
+ * @param {String} name
+ * @returns {String|null}
+ */
+function readCookie(name) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+/**
+ * @param {String} name 
+ */
+function eraseCookie(name) {
+    createCookie(name, '', -1);
+}
+
+/**
+ * Handles cookie and page checking to perform page redirect if requested
+ * @param {Function} callback 
+ */
+function checkPage(callback) {
+    console.log('checking page');
+    var loggedIn = readCookie('JSESSIONID'),
+        onLoginPage = window.location.href.indexOf('cp/home/displaylogin') !== -1,
+        redirected = readCookie('singlePageRedirect');
+    if (!loggedIn || onLoginPage) {
+        console.log('maybe not logged in')
+        createCookie('singlePageRedirect', false, 1);
+    } else if (!JSON.parse(redirected)) {
+        console.log('lets do it');
+        setPage();
+    }
+    console.log('reached end of callback');
+    callback();
+
+}
+
+/**
+ * Parses DOM for pagelinks that match the default page set in chrome.storage
+ */
+function setPage() {
     if (defaultPage !== 'central') {
         var lookFor;
         switch (defaultPage) {
@@ -58,11 +119,13 @@ function setPage(callback) {
             var sameURL = url === window.location.href;
             console.log(sameURL, link);
             if (link.text().toLowerCase() === lookFor && !sameURL) {
+                createCookie('singlePageRedirect', true, 1);
                 window.location.href = url;
             }
         });
+    } else {
+        createCookie('singlePageRedirect', true, 1);
     }
-    callback();
 }
 /*function updateAllColors(color) {
     var hColor = '#' + color;
@@ -75,6 +138,11 @@ function setPage(callback) {
     $('.mylogo').css('background-color',hColor)
     $('div.tabon a').css('box-shadow','inset 8px 0 0 0 ' + hColor)
 }*/
+
+/**
+ * Performs all style changes and DOM manipulations that build the modern theme
+ * For those of you reading this code, this was my first JS Chrome extension and most certainly needs a rebuild
+ */
 function modernTheme() {
     // This is currently causing conflict with iframe loading
     /*$("iframe").each(function() {
