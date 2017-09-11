@@ -26,6 +26,8 @@ chrome.storage.sync.get({
 });
 
 function checkScript() {
+    var greeting = 'Thank you for using Modern MyNEU. If you experience any issues or would like to dig into the code, head on over to https://github.com/Abbondanzo/Modern-MyNEU.';
+    console.info(greeting);
     checkPage(modernTheme);
 }
 
@@ -71,26 +73,23 @@ function eraseCookie(name) {
  * @param {Function} callback 
  */
 function checkPage(callback) {
-    console.log('checking page');
     var loggedIn = readCookie('JSESSIONID'),
         onLoginPage = window.location.href.indexOf('cp/home/displaylogin') !== -1,
         redirected = readCookie('singlePageRedirect');
     if (!loggedIn || onLoginPage) {
-        console.log('maybe not logged in')
         createCookie('singlePageRedirect', false, 1);
     } else if (!JSON.parse(redirected)) {
-        console.log('lets do it');
         setPage();
     }
-    console.log('reached end of callback');
     callback();
-
 }
 
 /**
  * Parses DOM for pagelinks that match the default page set in chrome.storage
  */
 function setPage() {
+    var html = document.querySelector('html');
+    html.style.opacity = 0;
     if (defaultPage !== 'central') {
         var lookFor;
         switch (defaultPage) {
@@ -117,7 +116,6 @@ function setPage() {
             var link = $(this).find('a');
             var url = window.location.origin + '/' + link.attr('href');
             var sameURL = url === window.location.href;
-            console.log(sameURL, link);
             if (link.text().toLowerCase() === lookFor && !sameURL) {
                 createCookie('singlePageRedirect', true, 1);
                 window.location.href = url;
@@ -125,6 +123,7 @@ function setPage() {
         });
     } else {
         createCookie('singlePageRedirect', true, 1);
+        html.style.opacity = 1;
     }
 }
 /*function updateAllColors(color) {
