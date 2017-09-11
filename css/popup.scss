@@ -37,6 +37,7 @@ table {
     width: 100%;
     padding-top: 1em;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 tbody {
@@ -56,7 +57,10 @@ tr {
 }
 
 td {
-    width: 50%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    word-wrap: break-word;
     vertical-align: middle;
     text-align: center;
 }
