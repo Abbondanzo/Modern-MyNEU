@@ -123,8 +123,10 @@ function setPage() {
         });
     } else {
         createCookie('singlePageRedirect', true, 1);
-        html.style.opacity = 1;
     }
+    setTimeout(function () {
+        html.style.opacity = 1;
+    }, 2000);
 }
 /*function updateAllColors(color) {
     var hColor = '#' + color;
