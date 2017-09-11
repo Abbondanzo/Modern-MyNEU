@@ -1,135 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Modern MyNEU's Options</title>
+    <link href="css/popup.css" rel="stylesheet" type="text/css">
     <style>
-    * {
-        outline: none;
-    }
-    body {
-        font-family: "Montserrat", sans-serif;
-        text-align: center;
-        font-size: 12px;
-        margin: 0;
-        color: #444;
-        background: #fafafa;
-    }
-    .title-head {
-        background: #ea1f23;
-        padding: 10px;
-        color: #fff;
-    }
-    h1, p{
-        margin: 0;
-    }
-    a {
-        color: inherit;
-    }
-    h3 {
-        font-weight: 400;
-        font-size: 12px;
-        text-align: left;
-    }
-    table {
-        width: 400px;
-        padding-top: 1em;
-        margin: 0 auto;
-        border-collapse: collapse;
-    }
-    tbody {
-        padding: 10px 0;
-        display: block;
-    }
-    tr {
-        background: #fff;
-        margin: 10px 15px 0 15px;
-        padding: 10px 20px;
-        display: block;
-        border-style: solid;
-        border-width: 1px;
-        border-color: rgb(224, 224, 224);
-        box-shadow: 0px 2px 3.52px 0.48px rgba(0, 0, 0, 0.05);
-    }
-    td {
-        width: 50%;
-        vertical-align: middle;
-        text-align: center;
-    }
-    button {
-        font-family: "Montserrat", sans-serif;
-        position: relative;
-        width: 100px;
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select: none;
-        display: block;
-        overflow: hidden;
-        cursor: pointer;
-        height: 30px;
-        padding: 0;
-        line-height: 20px;
-        border: 1px solid #b5b5b5;
-        border-radius: 30px;
-        background-color: #EEEEEE;
-        transition: background-color 0.3s ease-in;
-    }
-    button::before, button::after {
-        display: block;
-        position: absolute;
-        content: "";
-    }
-    button::before {
-        content: "";
-        display: block;
-        width: 23px;
-        margin: 0px;
-        background: #FFFFFF;
-        position: absolute;
-        top: 2px;
-        bottom: 2px;
-        right: 69px;
-        border: 1px solid #999999;
-        border-radius: 40px;
-        transition: all 0.3s ease-in 0s;
-    }
-    #enable[value=true]::before {
-        border-color: #ea1f23;
-        right: 2px;
-    }
-    #enable[value=true] {
-        background-color: #ea1f23;
-        color: #fff;
-    }
-    select {
-        width: 110px;
-        height: 36px;
-        border-radius: 4px;
-        font-family: "Montserrat", sans-serif;
-        margin-left: 30px;
-        padding-left: 10px;
-    }
-    .help {
-        font-size: 9px;
-        opacity: 0.4;
-        padding: 10px 0 20px 0;
-    }
-    .options {
-        width: 300px;
-        background: #fff;
-        padding: 20px 0;
-        border-top-width: 1px;
-    	border-top: 1px solid rgb(224, 224, 224);
-        text-decoration: none;
-    }
-    .options img {
-        height: 12px;
-        width: 12px;
-        margin-bottom: -1px;
-        padding-right: 0.25em;
-        x: 0.5em;
-    }
+        body {
+            width: 100%;
+        }
+
+        .content {
+            width: 400px;
+            margin: 0 auto;
+        }
     </style>
 </head>
+
 <body>
     <div class="title-head">
         <h1>Modern MyNEU</h1>
@@ -155,8 +41,33 @@
                     </select>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <h3>Custom Color (coming soon)</h3>
+                </td>
+                <td>
+                    <input class="jscolor" value="#EA1F23" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Default Page</h3>
+                </td>
+                <td>
+                    <select id="default-page">
+                        <option value="central" selected="selected">myNEU Central</option>
+                        <option value="selfservice">Self-Service</option>
+                        <option value="community">Community</option>
+                        <option value="coop">Experiential Learning/Co-op</option>
+                        <option value="career">Career Development</option>
+                        <option value="info">InfoChannels</option>
+                    </select>
+                </td>
+            </tr>
         </table>
-        <p style="padding:10px;font-size:10px;width:400px;margin:0 auto;">More settings coming soon. I'm in the middle of building two new features--theme customization and movable widget layouts.</p>
+        <p style="padding:10px;font-size:10px;margin:0 auto;">More settings coming soon. I'm in the middle of building two new features--theme customization and movable widget
+            layouts.
+        </p>
         <div class="help">
             <p>Any questions or bugs? Report them by <a target="_new" href="https://github.com/Abbondanzo/Modern-MyNEU/issues">clicking here</a></p>
         </div>
@@ -164,4 +75,5 @@
     </div>
 </body>
 <script src="js/popup.min.js"></script>
+
 </html>

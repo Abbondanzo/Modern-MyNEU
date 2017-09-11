@@ -1,14 +1,11 @@
 @import "../bourbon/bourbon";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-
 $padding: 2em 4em;
-
 $primary: #ea1f23;
 $textcolor: #63636b;
 $active: #242428;
 $sidemenu: #2c2c30;
 $border: #e4e4e4;
-
 // Width of left panel links
 $width: 380px;
 // Size of "active page" border in left panel
@@ -18,8 +15,8 @@ $header: 84px;
 // Width of logout button
 $logout: 130px;
 // Global font
-$font: 'Montserrat', sans-serif;
-
+$font: 'Montserrat',
+sans-serif;
 @include keyframes(slideInLeft) {
     0% {
         box-shadow: inset 0 0 0 0 $primary;
@@ -28,6 +25,7 @@ $font: 'Montserrat', sans-serif;
         box-shadow: inset $inset 0 0 0 $primary;
     }
 }
+
 @include keyframes(slideInUp) {
     0% {
         box-shadow: inset 0 0 0 0 $primary;
@@ -57,16 +55,25 @@ body.main {
     margin-right: 20px!important;
 }
 
-body, .uportal-background-content {
+body,
+.uportal-background-content {
     background-color: #f7f7f7!important;
     background-image: none;
 }
 
-.uportal-text, .uportal-channel-text, .uportal-head14-bold, .uportal-channel-subtitle, #lw, a, .Taupe {
+.uportal-text,
+.uportal-channel-text,
+.uportal-head14-bold,
+.uportal-channel-subtitle,
+#lw,
+a,
+.Taupe {
     font-family: $font!important;
 }
 
-ul, h1, h3 {
+ul,
+h1,
+h3 {
     display: block;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
@@ -85,25 +92,29 @@ abbr {
     height: 10px;
     text-align: center;
     font-size: 10px;
-
-    & > div {
+    &>div {
         background-color: #fff;
         height: 100%;
         width: 2px;
         display: inline-block;
         @include animation(sk-stretchdelay 1.2s infinite ease-in-out);
     }
-
     @for $i from 2 through 5 {
         .rect#{$i} {
-            @include animation-delay(-1.3s + $i * 0.1);
+            @include animation-delay(-1.3s+$i * 0.1);
         }
     }
 }
 
 @include keyframes(sk-stretchdelay) {
-    0%, 40%, 100% {@include transform(scaleY(0.4));}
-    20% {@include transform(scaleY(1));}
+    0%,
+    40%,
+    100% {
+        @include transform(scaleY(0.4));
+    }
+    20% {
+        @include transform(scaleY(1));
+    }
 }
 
 // Fancy select box
@@ -183,13 +194,13 @@ abbr {
             box-shadow: 0 3px 6px -1px #ccc;
         }
     }
-    ::-webkit-scrollbar {
+     ::-webkit-scrollbar {
         width: 0.75em;
     }
-    ::-webkit-scrollbar-track {
+     ::-webkit-scrollbar-track {
         background-color: whitesmoke;
     }
-    ::-webkit-scrollbar-thumb {
+     ::-webkit-scrollbar-thumb {
         border-radius: 4px;
         background: $primary;
     }
@@ -206,6 +217,7 @@ abbr {
 html {
     height: 100%;
 }
+
 .login {
     background-repeat: no-repeat;
     background-position: center;
@@ -218,7 +230,9 @@ html {
     #wrap {
         background: transparent;
     }
-    #main, #sidebar, #footer {
+    #main,
+    #sidebar,
+    #footer {
         display: none;
     }
     .new-login {
@@ -226,7 +240,8 @@ html {
         margin: 0 auto;
         @include display(flex);
         @include flex-direction(column);
-        &::before, &::after {
+        &::before,
+        &::after {
             content: "";
             @include flex-grow(1);
         }
@@ -284,6 +299,7 @@ html {
         }
     }
 }
+
 // All navigation menus
 .mylogo {
     position: fixed;
@@ -339,7 +355,8 @@ html {
         img {
             display: none;
         }
-        &:hover, &:visited {
+        &:hover,
+        &:visited {
             text-decoration: none;
         }
     }
@@ -366,14 +383,14 @@ html {
     }
     a .secondary {
         &:hover {
-            @include animation( slideInUp 0.2s forwards );
+            @include animation( slideInUp 0.2s forwards);
         }
         .fa {
             color: $primary;
             padding-right: 0.75em;
         }
     }
-    a .sreduce > .fa {
+    a .sreduce>.fa {
         display: none;
     }
     .search {
@@ -383,7 +400,8 @@ html {
         background: #fafafa;
         border: 1px solid #fff;
         border-radius: 99px;
-        padding: 1.2em 4em 1.2em 2.5em;;
+        padding: 1.2em 4em 1.2em 2.5em;
+        ;
         font-family: $font;
         &:focus {
             outline: none;
@@ -391,6 +409,7 @@ html {
         }
     }
 }
+
 // Fix for iframes
 #widgetmain {
     width: 100%!important;
@@ -398,6 +417,7 @@ html {
         width: 100%!important;
     }
 }
+
 #tabs_tda {
     background: $sidemenu;
     height: 100%;
@@ -450,7 +470,8 @@ html {
 }
 
 div {
-    &.tabon, &.taboff {
+    &.tabon,
+    &.taboff {
         padding: 0;
     }
     &.tabon {
@@ -461,10 +482,11 @@ div {
     }
     &.taboff {
         a:hover {
-            @include animation( slideInLeft 0.2s forwards );
+            @include animation( slideInLeft 0.2s forwards);
         }
     }
 }
+
 // Infochallens
 .news-items {
     .uportal-channel-text {
@@ -474,10 +496,12 @@ div {
         display: inline-block;
     }
 }
+
 // Student Info
 .campuspipeline {
     margin: 0!important;
 }
+
 .headerwrapperdiv {
     position: absolute;
     left: 0;
@@ -488,6 +512,7 @@ div {
     border-bottom: 1px solid #e4e4e4;
     .pageheaderdiv1 {
         display: none;
+        margin-top: 0;
     }
     .headerlinksdiv {
         display: inline-block;
@@ -504,7 +529,8 @@ div {
             .bgtaboff {
                 display: none;
             }
-            .taboff, .tabon {
+            .taboff,
+            .tabon {
                 padding-left: 0;
                 background: transparent;
                 height: 60px;
@@ -517,7 +543,7 @@ div {
             .taboff {
                 a {
                     &:hover {
-                        @include animation( slideInUp 0.2s forwards );
+                        @include animation( slideInUp 0.2s forwards);
                     }
                 }
             }
@@ -557,7 +583,8 @@ div {
         .fieldlabeltextinvisible {
             display: none;
         }
-        span, input {
+        span,
+        input {
             display: inline-block;
         }
         form {
@@ -566,7 +593,8 @@ div {
                 background: #fafafa;
                 border: 1px solid #fff;
                 border-radius: 99px;
-                padding: 1.2em 4em 1.2em 2.5em;;
+                padding: 1.2em 4em 1.2em 2.5em;
+                ;
                 font-family: $font;
                 width: 40%;
                 &:focus {
@@ -582,8 +610,9 @@ div {
                 cursor: pointer;
                 margin-left: 6px;
                 border-radius: 4px;
-                @include transition( background 0.25s );
-                &:hover, &:focus {
+                @include transition( background 0.25s);
+                &:hover,
+                &:focus {
                     outline: none;
                     background: shade($primary, 25);
                 }
@@ -595,7 +624,7 @@ div {
         &:visited {
             color: $textcolor;
         }
-        @include transition( color 0.25s );
+        @include transition( color 0.25s);
         &:hover {
             color: $primary!important;
             text-decoration: none;
@@ -606,9 +635,11 @@ div {
         }
     }
 }
+
 .pagetitlediv {
     display: none;
 }
+
 .pagebodydiv {
     background: #fff;
     margin: 80px 20px 20px 20px;
@@ -622,22 +653,25 @@ div {
         font-size: 1em;
     }
     form {
-        input[type="submit"], input[type="reset"] {
+        input[type="submit"],
+        input[type="reset"] {
             background: $primary;
             border: 0;
             border-radius: 4px;
             color: #fff;
             padding: 0.5em 1em;
             cursor: pointer;
-            @include transition( background 0.25s );
-            &:hover, &:focus {
+            @include transition( background 0.25s);
+            &:hover,
+            &:focus {
                 outline: none;
                 background: shade($primary, 25);
             }
         }
         input[type="reset"] {
             background: $textcolor;
-            &:hover, &:focus {
+            &:hover,
+            &:focus {
                 background: shade($textcolor, 25);
             }
         }
@@ -655,7 +689,8 @@ div {
             height: 150px;
             display: table;
             width: 100%;
-            h1, h3 {
+            h1,
+            h3 {
                 color: #fff;
                 font-family: $font;
                 font-weight: 800;
@@ -667,7 +702,8 @@ div {
             h3 {
                 font-size: 16px;
             }
-            .building-left, .building-right {
+            .building-left,
+            .building-right {
                 display: table-cell;
                 vertical-align: bottom;
                 padding: 20px;
@@ -696,7 +732,9 @@ div {
                 width: 18px;
                 vertical-align: top;
             }
-            .details-left, .details-center, .details-right {
+            .details-left,
+            .details-center,
+            .details-right {
                 display: table-cell;
                 span {
                     width: 100%;
@@ -746,7 +784,8 @@ div {
                         margin-top: -10px;
                     }*/
                 }
-                &:hover, &:focus {
+                &:hover,
+                &:focus {
                     .otherprof {
                         display: block;
                         min-width: 200px;
@@ -763,9 +802,11 @@ div {
             opacity: 0;
             height: 0;
             z-index: -1;
-            @include transition( all 0.25s );
-            .extras-left, .extras-right {
-                display: table-cell;;
+            @include transition( all 0.25s);
+            .extras-left,
+            .extras-right {
+                display: table-cell;
+                ;
                 width: 50%;
                 p {
                     color: $primary;
@@ -779,7 +820,8 @@ div {
                 padding: 0 10px 0 20px;
             }
             .extras-right {
-                padding: 0 20px 0 10px;;
+                padding: 0 20px 0 10px;
+                ;
             }
         }
     }
@@ -791,14 +833,18 @@ div {
         }
     }
 }
-.pagefooterdiv, .banner_copyright {
+
+.pagefooterdiv,
+.banner_copyright {
     width: 100%;
     opacity: 0.2;
     text-align: center!important;
 }
+
 table td.delabel {
     vertical-align: middle;
 }
+
 // Transcript table
 .datadisplaytable {
     border-spacing: 0;
@@ -808,7 +854,8 @@ table td.delabel {
         background: #3a3838;
         color: #fff;
         padding: 1em;
-        a, a:visited {
+        a,
+        a:visited {
             color: #ddd;
         }
     }
@@ -819,7 +866,8 @@ table td.delabel {
         font-size: 60%;
         vertical-align: middle;
     }
-    .dddefault, .dddead {
+    .dddefault,
+    .dddead {
         border-bottom: 1px solid #ddd;
         vertical-align: middle;
     }
@@ -843,6 +891,7 @@ table td.delabel {
         }
     }
 }
+
 @media screen and (max-width: 660px) {
     .pldefault {
         .pageheaderlinks {
@@ -859,7 +908,8 @@ table td.delabel {
             width: 50%;
             .plaintable {
                 min-width: 280px;
-                .tabon, .taboff {
+                .tabon,
+                .taboff {
                     a {
                         padding: 2em 1em;
                     }
@@ -868,6 +918,7 @@ table td.delabel {
         }
     }
 }
+
 @media screen and (max-width: 1050px) {
     .submenulinktext2 {
         span {
@@ -875,6 +926,7 @@ table td.delabel {
         }
     }
 }
+
 // Changes to page print view
 @media print {
     .headerwrapperdiv {
@@ -886,7 +938,10 @@ table td.delabel {
 }
 
 // Tables
-.bgmlight, .bg3, .bgtabon, .cpdate {
+.bgmlight,
+.bg3,
+.bgtabon,
+.cpdate {
     display: none;
 }
 
@@ -917,7 +972,8 @@ table td.delabel {
 // Viewport render fixes
 @media screen and (max-width: 1700px) {
     .heading {
-        .user span, li a span {
+        .user span,
+        li a span {
             font-size: 12px;
         }
         li a span {
@@ -931,11 +987,13 @@ table td.delabel {
         }
     }
 }
+
 @media screen and (max-width: 1400px) {
     .search {
         padding-left: 0;
     }
 }
+
 @media screen and (max-width: 1360px) {
     .mylogo {
         width: 0.75*$width;
@@ -944,7 +1002,8 @@ table td.delabel {
         }
     }
     #tabs_tda {
-        tr, li {
+        tr,
+        li {
             width: 0.75*$width;
         }
         a {

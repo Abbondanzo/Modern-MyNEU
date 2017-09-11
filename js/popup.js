@@ -1,55 +1,71 @@
 // Saves options to chrome.storage
-function save_options() {
-    var enab = document.getElementById('enable');
-    if (enab.value === "false") {
-        enab.value = "true";
-        enab.textContent = "On";
-        chrome.tabs.executeScript(null, {file: "js/script.min.js"});
-    } else {
-        enab.value = "false";
-        enab.textContent = "Off";
-    }
-    var enabled = document.getElementById('enable').value;
-    chrome.storage.sync.set({
-        enabled: enabled
-    }, function() {
+function saveOptions(option, value) {
+    var storageOption = {};
+    storageOption[option] = value;
+    chrome.storage.sync.set(storageOption, function () {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
         status.textContent = 'Options saved.';
-        setTimeout(function() {
+        setTimeout(function () {
             status.textContent = '';
         }, 750);
     });
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
-function restore_options() {
-    // Use default value color = 'red' and likesColor = true.
+// Restores select box and checkbox state using the preferences stored in chrome.storage.
+function restoreOptions() {
     chrome.storage.sync.get({
-        enabled: "true",
-        customColor: "EA1F23"
-    }, function(items) {
+        enabled: 'true',
+        customColor: '#EA1F23',
+        defaultPage: 'central'
+    }, function (items) {
         var enab = document.getElementById('enable');
         enab.value = items.enabled;
-        if (enab.value === "false") {
-            enab.textContent = 'Off'
+        if (JSON.parse(enab.value)) {
+            enab.textContent = 'On';
         } else {
-            enab.textContent = 'On'
+            enab.textContent = 'Off';
         }
-        var cpicker = document.querySelector('.jscolor')
-        setAllColors(items.customColor)
-        cpicker.value = items.customColor
-        cpicker.style.backgroundColor = '#' + items.customColor
+        var cpicker = document.querySelector('.jscolor');
+        // setAllColors(items.customColor);
+        cpicker.value = items.customColor;
+        cpicker.style.backgroundColor = items.customColor;
+        document.querySelector('#default-page').value = items.defaultPage;
     });
 }
-document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('enable').addEventListener('click',function() {
-    save_options();
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
+
+// Load options upon start
+document.addEventListener('DOMContentLoaded', restoreOptions);
+
+// Event listener for 'Toggle Plugin On/Off'
+document.getElementById('enable').addEventListener('click', function () {
+    updateToggle();
+    chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    }, function (tabs) {
+        chrome.tabs.update(tabs[0].id, {
+            url: tabs[0].url
+        });
     });
 });
+
+// Update Chrome storage when extension is toggled on/off
+function updateToggle() {
+    var enab = document.getElementById('enable');
+    if (JSON.parse(enab.value)) {
+        enab.value = 'false';
+        enab.textContent = 'Off';
+    } else {
+        enab.value = 'true';
+        enab.textContent = 'On';
+        chrome.tabs.executeScript(null, {
+            file: 'js/script.min.js'
+        });
+    }
+    var enabled = enab.value;
+    saveOptions('enabled', enabled);
+}
 
 // Sets default colors
 /*function setAllColors(jscolor) {
@@ -75,6 +91,12 @@ document.getElementById('enable').addEventListener('click',function() {
         chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
     });
 }
-document.querySelector('.jscolor').addEventListener('change',function() {
-    update(this.jscolor);
-})*/
+*/
+
+document.querySelector('#default-page').addEventListener('change', function (event) {
+    saveOptions('defaultPage', event.target.value);
+})
+
+document.querySelector('.jscolor').addEventListener('keyup', function (event) {
+    saveOptions('customColor', event.target.value);
+})
