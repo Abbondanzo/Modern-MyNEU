@@ -300,6 +300,7 @@ function modernTheme() {
 
     function fixHeading() {
         var heading = $('.heading');
+
         // Overflow detection
         if (heading.height() < heading.children().height()) {
             $('.secondary').each(function () {
@@ -308,16 +309,10 @@ function modernTheme() {
                 if ($(window).width() > widthOf) {
                     widthOf = $(window).width();
                 }
-                if ($(this).html().indexOf('Signed') !== -1) {
-                    $(this).css('display', 'none');
-                }
             });
         } else if ($(window).width() > widthOf) { // Checks at overflow width
             $('.secondary').each(function () {
                 $(this).removeClass('sreduce');
-                if ($(this).html().indexOf('Signed') !== -1) {
-                    $(this).css('display', 'block');
-                }
             });
         }
     }

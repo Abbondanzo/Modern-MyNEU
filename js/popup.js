@@ -1,4 +1,8 @@
-// Saves options to chrome.storage
+/**
+ * Saves options to chrome.storage
+ * @param {String} option 
+ * @param {*} value
+ */
 function saveOptions(option, value) {
     var storageOption = {};
     storageOption[option] = value;
@@ -12,7 +16,9 @@ function saveOptions(option, value) {
     });
 }
 
-// Restores select box and checkbox state using the preferences stored in chrome.storage.
+/**
+ * Restores select box and checkbox state using the preferences stored in chrome.storage.
+ */
 function restoreOptions() {
     chrome.storage.sync.get({
         enabled: 'true',
@@ -34,10 +40,14 @@ function restoreOptions() {
     });
 }
 
-// Load options upon start
+/**
+ * Load options upon start
+ */
 document.addEventListener('DOMContentLoaded', restoreOptions);
 
-// Event listener for 'Toggle Plugin On/Off'
+/**
+ * Event listener for 'Toggle Plugin On/Off'
+ */
 document.getElementById('enable').addEventListener('click', function () {
     updateToggle();
     chrome.tabs.query({
@@ -50,7 +60,9 @@ document.getElementById('enable').addEventListener('click', function () {
     });
 });
 
-// Update Chrome storage when extension is toggled on/off
+/**
+ * Update Chrome storage when extension is toggled on/off
+ */
 function updateToggle() {
     var enab = document.getElementById('enable');
     if (JSON.parse(enab.value)) {
@@ -93,10 +105,17 @@ function updateToggle() {
 }
 */
 
-document.querySelector('#default-page').addEventListener('change', function (event) {
-    saveOptions('defaultPage', event.target.value);
-})
+/**
+ * Add event listeners for data-based options
+ * @param {HTMLElement} element 
+ * @param {String} eventType 
+ * @param {String} option 
+ */
+function buildEventListener(element, eventType, option) {
+    document.querySelector(element).addEventListener(eventType, function (event) {
+        saveOptions(option, event.target.value);
+    })
+}
 
-document.querySelector('.jscolor').addEventListener('keyup', function (event) {
-    saveOptions('customColor', event.target.value);
-})
+buildEventListener('#default-page', 'change', 'defaultPage');
+buildEventListener('.jscolor', 'keyup', 'customColor');
