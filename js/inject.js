@@ -250,21 +250,23 @@ function modernTheme() {
     /* Adds icons to sidebar menu */
     $('.nav div ul li').each(function () {
         var html = $(this).children().children().html();
-        if (html.indexOf('myNEU Central') !== -1) {
-            $(this).children().children().html('<i class="fa fa-home" aria-hidden="true"></i> ' + html);
-        } else if (html.indexOf('Self-Service') !== -1) {
-            $(this).children().children().html('<i class="fa fa-navicon" aria-hidden="true"></i> ' + html);
-        } else if (html.indexOf('Community') !== -1) {
-            $(this).children().children().html('<i class="fa fa-users" aria-hidden="true"></i> ' + html);
-        } else if (html.indexOf('Experiential Learning/Co-op') !== -1) {
-            $(this).children().children().html('<i class="fa fa-graduation-cap" aria-hidden="true"></i> ' + html);
-        } else if (html.indexOf('Career Development') !== -1) {
-            $(this).children().children().html('<i class="fa fa-briefcase" aria-hidden="true"></i> ' + html);
-        } else if (html.indexOf('InfoChannels') !== -1) {
-            $(this).children().children().html('<i class="fa fa-info-circle" aria-hidden="true"></i> ' + html);
-        } else { // Fallback icon styling
-            $(this).children().children().html('<i class="fa fa-file-text" aria-hidden="true"></i> ' + html);
+        var faIcon = 'fa-file-text';
+        var pages = {
+            'myNEU Central': 'fa-home',
+            'Self-Service': 'fa-navicon',
+            'Community': 'fa-users',
+            'Experiential Learning/Co-op': 'fa-graduation-cap',
+            'Career Development': 'fa-briefcase',
+            'InfoChannels': 'fa-info-circle'
+        };
+
+        for (var key in pages) {
+            if (html.indexOf(key) !== -1) {
+                faIcon = pages[key];
+            }
         }
+
+        $(this).children().children().html('<i class="fa ' + faIcon + '" aria-hidden="true"></i> ' + html);
     });
     /* Replaces expand, minimize, and maximize icons */
     $('.border img').each(function () {
@@ -632,43 +634,34 @@ function modernTheme() {
 
     // Sets image background of schedule item based on building name string
     function returnBuilding(image) {
-        if (image.indexOf('Behrakis') !== -1) {
-            return 'img/buildings/behrakis.jpg';
-        } else if (image.indexOf('West Village H') !== -1) {
-            return 'img/buildings/wvh.jpg';
-        } else if (image.indexOf('West Village G') !== -1) {
-            return 'img/buildings/wvg.jpg';
-        } else if (image.indexOf('West Village F') !== -1) {
-            return 'img/buildings/wvf.jpg';
-        } else if (image.indexOf('International Village') !== -1) {
-            return 'img/buildings/iv.jpg';
-        } else if (image.indexOf('Ryder') !== -1) {
-            return 'img/buildings/ryder.jpg';
-        } else if (image.indexOf('Forsyth') !== -1) {
-            return 'img/buildings/forsyth.jpg';
-        } else if (image.indexOf('Richards') !== -1) {
-            return 'img/buildings/richards.jpg';
-        } else if (image.indexOf('Ell') !== -1) {
-            return 'img/buildings/ell.jpg';
-        } else if (image.indexOf('Dodge') !== -1) {
-            return 'img/buildings/dodge.jpg';
-        } else if (image.indexOf('Hayden') !== -1) {
-            return 'img/buildings/hayden.jpg';
-        } else if (image.indexOf('Hurtig') !== -1) {
-            return 'img/buildings/hurtig.jpg';
-        } else if (image.indexOf('Mugar') !== -1) {
-            return 'img/buildings/mugar.jpg';
-        } else if (image.indexOf('Robinson') !== -1) {
-            return 'img/buildings/robinson.jpg';
-        } else if (image.indexOf('Snell Library') !== -1) {
-            return 'img/buildings/library.jpg';
-        } else if (image.indexOf('Lake') !== -1) {
-            return 'img/buildings/lake.jpg';
-        } else if (image.indexOf('Kariotis') !== -1) {
-            return 'img/buildings/kariotis.jpg';
-        } else {
-            return 'img/buildings/campus.jpg';
+        var buildings = {
+            'Behrakis': 'img/buildings/behrakis.jpg',
+            'West Village H': 'img/buildings/wvh.jpg',
+            'West Village G': 'img/buildings/wvg.jpg',
+            'West Village F': 'img/buildings/wvf.jpg',
+            'International Village': 'img/buildings/iv.jpg',
+            'Ryder': 'img/buildings/ryder.jpg',
+            'Forsyth': 'img/buildings/forsyth.jpg',
+            'Richards': 'img/buildings/richards.jpg',
+            'Ell': 'img/buildings/ell.jpg',
+            'Dodge': 'img/buildings/dodge.jpg',
+            'Hayden': 'img/buildings/hayden.jpg',
+            'Hurtig': 'img/buildings/hurtig.jpg',
+            'Mugar': 'img/buildings/mugar.jpg',
+            'Robinson': 'img/buildings/robinson.jpg',
+            'Snell Library': 'img/buildings/library.jpg',
+            'Lake': 'img/buildings/lake.jpg',
+            'Kariotis': 'img/buildings/kariotis.jpg',
         }
+
+        for (var key in buildings) {
+            if (image.indexOf(key) !== -1) {
+                return buildings[key];
+            }
+        }
+
+        // Fallback return
+        return 'img/buildings/campus.jpg';
     }
 
     // Returns the given professor with a mailto link if they have one assigned
