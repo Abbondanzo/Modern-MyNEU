@@ -5,102 +5,10 @@ This page is shown when the extension button is clicked, because the
 value "popup.html".
 -->
 <html>
+
 <head>
     <title>Modern MyNEU's Popup</title>
-    <style>
-    * {
-        outline: none;
-    }
-    body {
-        font-family: "Montserrat", sans-serif;
-        text-align: center;
-        font-size: 12px;
-        width: 300px;
-        margin: 0;
-        color: #444;
-    }
-    .title-head {
-        width: 100%;
-        background: #2c2c30;
-        padding: 10px;
-        color: #fff;
-    }
-    h1, p{
-        margin: 0;
-    }
-    a {
-        color: inherit;
-    }
-    h3 {
-        font-weight: 400;
-        font-size: 12px;
-        text-align: left;
-    }
-    table {
-        width: 100%;
-        padding-top: 1em;
-    }
-    td {
-        width: 50%;
-        vertical-align: middle;
-        text-align: center;
-        padding: 0 8px 1em 8px;
-    }
-    button {
-        font-family: "Montserrat", sans-serif;
-        position: relative;
-        width: 140px;
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select: none;
-        display: block;
-        overflow: hidden;
-        cursor: pointer;
-        height: 40px;
-        padding: 0;
-        line-height: 20px;
-        border: 2px solid #999999;
-        border-radius: 40px;
-        background-color: #EEEEEE;
-        transition: background-color 0.3s ease-in;
-    }
-    button::before, button::after {
-        display: block;
-        position: absolute;
-        content: "";
-    }
-    button::before {
-        content: "";
-        display: block;
-        width: 32px;
-        margin: 0px;
-        background: #FFFFFF;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 98px;
-        border: 2px solid #999999;
-        border-radius: 40px;
-        transition: all 0.3s ease-in 0s;
-    }
-    #enable[value=true]::before {
-        border-color: #8CE196;
-        right: 0px;
-    }
-    #enable[value=true] {
-        background-color: #8CE196;
-        color: #fff;
-    }
-    select {
-        width: 140px;
-        height: 40px;
-    }
-    .help {
-        font-size: 10px;
-        opacity: 0.6;
-        padding: 10px;
-    }
-    </style>
+    <link href="css/popup.css" rel="stylesheet" type="text/css">
 
     <!--
     - JavaScript and HTML must be in separate files: see our Content Security
@@ -109,6 +17,7 @@ value "popup.html".
     - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
 -->
 </head>
+
 <body>
     <div class="title-head">
         <h1>Modern MyNEU</h1>
@@ -133,12 +42,39 @@ value "popup.html".
                 </select>
             </td>
         </tr>
+        <tr>
+            <td>
+                <h3>Custom Color (coming soon)</h3>
+            </td>
+            <td>
+                <input class="jscolor" value="#EA1F23" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>Default Page</h3>
+            </td>
+            <td>
+                <select id="default-page">
+                    <option value="central" selected="selected">myNEU Central</option>
+                    <option value="selfservice">Self-Service</option>
+                    <option value="community">Community</option>
+                    <option value="coop">Experiential Learning/Co-op</option>
+                    <option value="career">Career Development</option>
+                    <option value="info">InfoChannels</option>
+                </select>
+            </td>
+        </tr>
     </table>
-    <p style="padding:10px;font-size:10px;">More settings coming soon. I'm brand new to this whole "Chrome storage" thing so I'm constantly tinkering with the back-end. I'm also adjusting this current theme to work on pop-up windows, as well as building two new features--theme customization and movable widget layouts.</p>
     <div class="help">
         <p>Any questions or bugs? Report them by <a target="_new" href="https://github.com/Abbondanzo/Modern-MyNEU/issues">clicking here</a></p>
     </div>
+    <a href="options.html" target="_blank" style="text-decoration: none;">
+        <p class="options"><img src="img/wrench.png"> More Options</p>
+    </a>
     <div id="status"></div>
 </body>
-<script src="js/popup.js"></script>
+<script type="text/javascript" src="js/popup.min.js"></script>
+<!-- <script type="text/javascript" src="js/jscolor.min.js"></script> -->
+
 </html>

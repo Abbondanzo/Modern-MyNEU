@@ -1,104 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Modern MyNEU's Options</title>
+    <link href="css/popup.css" rel="stylesheet" type="text/css">
     <style>
-    * {
-        outline: none;
-    }
-    body {
-        font-family: "Montserrat", sans-serif;
-        text-align: center;
-        font-size: 12px;
-        margin: 0;
-        color: #444;
-    }
-    .title-head {
-        width: 100%;
-        background: #2c2c30;
-        padding: 10px;
-        color: #fff;
-    }
-    .content {
-        width: 480px;
-        margin: 0 auto;
-    }
-    h1, p{
-        margin: 0;
-    }
-    a {
-        color: inherit;
-    }
-    h3 {
-        font-weight: 400;
-        font-size: 12px;
-        text-align: left;
-    }
-    table {
-        padding-top: 1em;
-        width: 100%;
-    }
-    td {
-        width: 50%;
-        vertical-align: middle;
-        text-align: center;
-        padding: 0 8px 1em 8px;
-    }
-    button {
-        font-family: "Montserrat", sans-serif;
-        position: relative;
-        width: 140px;
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select: none;
-        overflow: hidden;
-        cursor: pointer;
-        height: 40px;
-        padding: 0;
-        line-height: 20px;
-        border: 2px solid #999999;
-        border-radius: 40px;
-        background-color: #EEEEEE;
-        transition: background-color 0.3s ease-in;
-    }
-    button::before, button::after {
-        display: block;
-        position: absolute;
-        content: "";
-    }
-    button::before {
-        content: "";
-        display: block;
-        width: 32px;
-        margin: 0px;
-        background: #FFFFFF;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 98px;
-        border: 2px solid #999999;
-        border-radius: 40px;
-        transition: all 0.3s ease-in 0s;
-    }
-    #enable[value=true]::before {
-        border-color: #8CE196;
-        right: 0px;
-    }
-    #enable[value=true] {
-        background-color: #8CE196;
-        color: #fff;
-    }
-    select {
-        width: 140px;
-        height: 40px;
-    }
-    .help {
-        font-size: 10px;
-        opacity: 0.6;
-        padding: 10px;
-    }
+        body {
+            width: 100%;
+        }
+
+        .content {
+            width: 400px;
+            margin: 0 auto;
+        }
     </style>
 </head>
+
 <body>
     <div class="title-head">
         <h1>Modern MyNEU</h1>
@@ -111,7 +28,7 @@
                     <h3>Toggle Plugin On/Off</h3>
                 </td>
                 <td>
-                    <button value="true" id="enable">ON</button>
+                    <button style="margin-left:40px;" value="true" id="enable">ON</button>
                 </td>
             </tr>
             <tr>
@@ -124,13 +41,39 @@
                     </select>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <h3>Custom Color (coming soon)</h3>
+                </td>
+                <td>
+                    <input class="jscolor" value="#EA1F23" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Default Page</h3>
+                </td>
+                <td>
+                    <select id="default-page">
+                        <option value="central" selected="selected">myNEU Central</option>
+                        <option value="selfservice">Self-Service</option>
+                        <option value="community">Community</option>
+                        <option value="coop">Experiential Learning/Co-op</option>
+                        <option value="career">Career Development</option>
+                        <option value="info">InfoChannels</option>
+                    </select>
+                </td>
+            </tr>
         </table>
-        <p style="padding:10px;font-size:10px;">More settings coming soon. I'm brand new to this whole "Chrome storage" thing so I'm constantly tinkering with the back-end. I'm also adjusting this current theme to work on pop-up windows, as well as building two new features--theme customization and movable widget layouts.</p>
+        <p style="padding:10px;font-size:10px;margin:0 auto;">More settings coming soon. I'm in the middle of building two new features--theme customization and movable widget
+            layouts.
+        </p>
         <div class="help">
             <p>Any questions or bugs? Report them by <a target="_new" href="https://github.com/Abbondanzo/Modern-MyNEU/issues">clicking here</a></p>
         </div>
         <div id="status"></div>
     </div>
 </body>
-<script src="js/popup.js"></script>
+<script src="js/popup.min.js"></script>
+
 </html>
