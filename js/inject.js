@@ -9,7 +9,7 @@ var defaultPage;
 
 // Load extension settings
 chrome.storage.sync.get({
-    enabled: 'true',
+    enabled: 'false',
     customColor: 'ea1f23',
     defaultPage: 'central'
 }, function (items) {
